@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>watsonx data consumer agent</title>
+
+    <style>
+      :root {
+        font-family: "IBM Plex Sans", Inter, Arial, sans-serif;
+        color: #161616;
+        background: #ffffff;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .site-header {
+        z-index: 10;
+        display: flex;
+        flex: 0 0 64px;
+        align-items: center;
+        padding: 0 24px;
+        color: #ffffff;
+        background: #161616;
+        border-bottom: 1px solid #393939;
+      }
+
+      .site-header__title {
+        margin: 0;
+        font-size: 1.125rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+
+      #root {
+        position: relative;
+        flex: 1 1 auto;
+        width: 100%;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .load-error {
+        display: grid;
+        height: 100%;
+        place-items: center;
+        padding: 24px;
+        color: #da1e28;
+        text-align: center;
+      }
+
+      @media (max-width: 600px) {
+        .site-header { flex-basis: 56px; padding: 0 16px; }
+        .site-header__title { font-size: 1rem; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <h1 class="site-header__title">watsonx data consumer agent</h1>
+    </header>
+
+    <main id="root" aria-label="watsonx data consumer agent chat"></main>
+
+    <script>
+      window.wxOConfiguration = {
+        orchestrationID: "1002447ca6584c1dbe6bdc052bdb0799_892e96ab-be74-487f-ac30-15756aa4ab42",
+        hostURL: "https://au-syd.watson-orchestrate.cloud.ibm.com",
+        rootElementID: "root",
+        showLauncher: false,
+        deploymentPlatform: "ibmcloud",
+        crn: "crn:v1:bluemix:public:watsonx-orchestrate:au-syd:a/1002447ca6584c1dbe6bdc052bdb0799:892e96ab-be74-487f-ac30-15756aa4ab42::",
+
+        chatOptions: {
+          agentId: "0d02a64e-d250-45ff-9c67-23c1e1cd31a9"
+        },
+
+        layout: {
+          form: "fullscreen-overlay",
+          showOrchestrateHeader: true,
+          showMaxWidth: true
+        },
+
+        features: {
+          showThreadList: true,
+          showAgentMemory: false
+        },
+
+        header: {
+          showResetButton: true,
+          showAiDisclaimer: true,
+          showMaximize: false,
+          showAgentAvatar: true,
+          showAgentName: true
+        },
+
+        style: {
+          theme: "light",
+          headerColor: "#161616",
+          primaryColor: "#0f62fe",
+          userMessageBackgroundColor: "#0f62fe",
+          fontFamily: '"IBM Plex Sans", Inter, Arial, sans-serif',
+          showBackgroundGradient: false
+        }
+      };
+
+      setTimeout(function loadWatsonxOrchestrateChat() {
+        const script = document.createElement("script");
+        script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
+        script.async = true;
+
+        script.addEventListener("load", function () {
+          window.wxoLoader.init();
+        });
+
+        script.addEventListener("error", function () {
+          document.getElementById("root").innerHTML =
+            '<div class="load-error" role="alert">The chat could not be loaded. Please refresh the page or try again later.</div>';
+        });
+
+        document.head.appendChild(script);
+      }, 0);
+    </script>
+  </body>
+</html>
