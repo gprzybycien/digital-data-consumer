@@ -370,10 +370,10 @@
   "product": {
     "name": "Performance Marketing",
     "family_id": "05f20313-2b04-4d14-a86c-29c6449ffa4a",
-    "version": "1.0.2",
-    "version_id": "01a10bfc-b49d-7071-9169-5f47f81d8e64",
+    "version": "1.0.3",
+    "version_id": "01a10c95-b307-75fb-86f4-b741fd76491a",
     "catalog_id": "a22d014d-82d1-4374-9de2-4478e350a5f6",
-    "url": "https://dataplatform.cloud.ibm.com/dpx/?page_id=UI_PRODUCT_DETAIL_PAGE&productState=available&version_id=01a10bfc-b49d-7071-9169-5f47f81d8e64&context=df"
+    "url": "https://dataplatform.cloud.ibm.com/dpx/?page_id=UI_PRODUCT_DETAIL_PAGE&productState=available&version_id=01a10c95-b307-75fb-86f4-b741fd76491a&context=df"
   },
   "assignment_workaround": {
     "enabled": true,
@@ -384,14 +384,14 @@
     "assets": [
       {
         "name": "customer_consent",
-        "id": "01a10bff-1684-76f0-946c-3339bc219545",
+        "id": "01a10c95-a57c-7018-8748-9c5e0acc65f1",
         "columns": [
           {
             "column": "uid",
             "assigned": [
               {
-                "name": "Marketing subject identifier",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_49820067-de6c-4fcc-8fe7-bcfe5c8a5198"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_49820067-de6c-4fcc-8fe7-bcfe5c8a5198",
+                "name": "Marketing subject identifier"
               }
             ],
             "suggested": [],
@@ -401,8 +401,8 @@
             "column": "email_addr",
             "assigned": [
               {
-                "name": "Marketing email address",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_8ae425f8-2a54-42f5-8028-f065b19882e2"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_8ae425f8-2a54-42f5-8028-f065b19882e2",
+                "name": "Marketing email address"
               }
             ],
             "suggested": [],
@@ -412,8 +412,8 @@
             "column": "marketing_opt_in",
             "assigned": [
               {
-                "name": "Recorded marketing opt-in state",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_65240c11-5fab-4fd6-9d21-b0a7c9fa9bfe"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_65240c11-5fab-4fd6-9d21-b0a7c9fa9bfe",
+                "name": "Recorded marketing opt-in state"
               }
             ],
             "suggested": [],
@@ -423,8 +423,8 @@
             "column": "consent_updated_ts",
             "assigned": [
               {
-                "name": "Consent state update timestamp",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_980eb6f7-fccc-4038-a356-2b25f3dfa8ec"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_980eb6f7-fccc-4038-a356-2b25f3dfa8ec",
+                "name": "Consent state update timestamp"
               }
             ],
             "suggested": [],
@@ -434,14 +434,14 @@
       },
       {
         "name": "booking_conversion",
-        "id": "01a10bff-1684-742f-9855-6a3d4dbd7bb8",
+        "id": "01a10c95-a577-77b4-b365-301e95be5aa9",
         "columns": [
           {
             "column": "uid",
             "assigned": [
               {
-                "name": "Marketing subject identifier",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_49820067-de6c-4fcc-8fe7-bcfe5c8a5198"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_49820067-de6c-4fcc-8fe7-bcfe5c8a5198",
+                "name": "Marketing subject identifier"
               }
             ],
             "suggested": [],
@@ -451,8 +451,8 @@
             "column": "cmp_id",
             "assigned": [
               {
-                "name": "Recorded campaign attribution",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_c6cbc4d5-9b40-45f4-ae53-9f83f6db419b"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_c6cbc4d5-9b40-45f4-ae53-9f83f6db419b",
+                "name": "Recorded campaign attribution"
               }
             ],
             "suggested": [],
@@ -462,8 +462,8 @@
             "column": "conversion_id",
             "assigned": [
               {
-                "name": "Booking conversion record identifier",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_6caf1a4b-4fce-4079-b15b-03f4885d39b9"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_6caf1a4b-4fce-4079-b15b-03f4885d39b9",
+                "name": "Booking conversion record identifier"
               }
             ],
             "suggested": [],
@@ -473,8 +473,8 @@
             "column": "conversion_ts",
             "assigned": [
               {
-                "name": "Recorded conversion timestamp",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_89bff308-522b-43cf-80ff-d03d6a96dfd2"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_89bff308-522b-43cf-80ff-d03d6a96dfd2",
+                "name": "Recorded conversion timestamp"
               }
             ],
             "suggested": [],
@@ -484,8 +484,8 @@
             "column": "revenue_amount",
             "assigned": [
               {
-                "name": "Recorded booking amount",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_1cf24ca8-0d0b-4a54-95d7-5198cb513ffd"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_1cf24ca8-0d0b-4a54-95d7-5198cb513ffd",
+                "name": "Recorded booking amount"
               }
             ],
             "suggested": [],
@@ -495,8 +495,8 @@
             "column": "booking_created_ts",
             "assigned": [
               {
-                "name": "Booking creation timestamp",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_b40afabe-303d-4300-8cdc-3d5196d4591e"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_b40afabe-303d-4300-8cdc-3d5196d4591e",
+                "name": "Booking creation timestamp"
               }
             ],
             "suggested": [],
@@ -506,8 +506,8 @@
             "column": "payment_completed_ts",
             "assigned": [
               {
-                "name": "Payment completion timestamp",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_b47b877f-118f-45f3-8f91-a4dd047be321"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_b47b877f-118f-45f3-8f91-a4dd047be321",
+                "name": "Payment completion timestamp"
               }
             ],
             "suggested": [],
@@ -517,14 +517,14 @@
       },
       {
         "name": "campaign",
-        "id": "01a10bff-1684-74ef-b3fa-9af934ccc6cd",
+        "id": "01a10c95-a57b-7063-9a6d-932f1a1addc9",
         "columns": [
           {
             "column": "end_date",
             "assigned": [
               {
-                "name": "Campaign end date",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_a8f9c3d9-8382-4236-a956-cb9c0a14624c"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_a8f9c3d9-8382-4236-a956-cb9c0a14624c",
+                "name": "Campaign end date"
               }
             ],
             "suggested": [],
@@ -534,8 +534,8 @@
             "column": "start_date",
             "assigned": [
               {
-                "name": "Campaign start date",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_3cf57151-33e2-413a-b0ab-610aec879910"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_3cf57151-33e2-413a-b0ab-610aec879910",
+                "name": "Campaign start date"
               }
             ],
             "suggested": [],
@@ -545,21 +545,24 @@
             "column": "campaign_id",
             "assigned": [
               {
-                "name": "Marketing campaign identifier",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_de50a663-ecf3-400a-9d5e-94494f8ba561"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_de50a663-ecf3-400a-9d5e-94494f8ba561",
+                "name": "Marketing campaign identifier"
               }
             ],
             "suggested": [],
             "rejected": [
-              "Recorded campaign attribution"
+              {
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_c6cbc4d5-9b40-45f4-ae53-9f83f6db419b",
+                "name": "Recorded campaign attribution"
+              }
             ]
           },
           {
             "column": "channel_code",
             "assigned": [
               {
-                "name": "Marketing channel",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_c1318d05-e126-4d92-8be8-9387429ae5ee"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_c1318d05-e126-4d92-8be8-9387429ae5ee",
+                "name": "Marketing channel"
               }
             ],
             "suggested": [],
@@ -569,8 +572,8 @@
             "column": "campaign_name",
             "assigned": [
               {
-                "name": "Marketing campaign name",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_447db31b-99a5-4c3b-a46c-a55916108bc8"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_447db31b-99a5-4c3b-a46c-a55916108bc8",
+                "name": "Marketing campaign name"
               }
             ],
             "suggested": [],
@@ -580,8 +583,8 @@
             "column": "planned_budget",
             "assigned": [
               {
-                "name": "Planned campaign budget",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_cbbb6b7b-876f-4285-b6fa-0a4acc5050d0"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_cbbb6b7b-876f-4285-b6fa-0a4acc5050d0",
+                "name": "Planned campaign budget"
               }
             ],
             "suggested": [],
@@ -591,14 +594,14 @@
       },
       {
         "name": "digital_event",
-        "id": "01a10bff-1684-74d2-b7b6-29c3cfb814dc",
+        "id": "01a10c95-a57b-7583-886e-7bf929f418d5",
         "columns": [
           {
             "column": "ts",
             "assigned": [
               {
-                "name": "Digital event timestamp",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_83ea5ff5-a194-437c-93ac-84a0bb5dbccc"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_83ea5ff5-a194-437c-93ac-84a0bb5dbccc",
+                "name": "Digital event timestamp"
               }
             ],
             "suggested": [],
@@ -608,8 +611,8 @@
             "column": "evt",
             "assigned": [
               {
-                "name": "Digital event type",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_68740022-2188-40a4-81db-7c8c1b6ab248"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_68740022-2188-40a4-81db-7c8c1b6ab248",
+                "name": "Digital event type"
               }
             ],
             "suggested": [],
@@ -619,21 +622,24 @@
             "column": "uid",
             "assigned": [
               {
-                "name": "Marketing subject identifier",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_49820067-de6c-4fcc-8fe7-bcfe5c8a5198"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_49820067-de6c-4fcc-8fe7-bcfe5c8a5198",
+                "name": "Marketing subject identifier"
               }
             ],
             "suggested": [],
             "rejected": [
-              "Digital event identifier"
+              {
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_dd9a5a7a-0eef-42a5-b14b-1e4e829c0291",
+                "name": "Digital event identifier"
+              }
             ]
           },
           {
             "column": "page",
             "assigned": [
               {
-                "name": "Digital page path",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_4746e37d-5074-4792-bb19-ded79feb3041"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_4746e37d-5074-4792-bb19-ded79feb3041",
+                "name": "Digital page path"
               }
             ],
             "suggested": [],
@@ -643,21 +649,24 @@
             "column": "cmp_id",
             "assigned": [
               {
-                "name": "Recorded campaign attribution",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_c6cbc4d5-9b40-45f4-ae53-9f83f6db419b"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_c6cbc4d5-9b40-45f4-ae53-9f83f6db419b",
+                "name": "Recorded campaign attribution"
               }
             ],
             "suggested": [],
             "rejected": [
-              "Digital event identifier"
+              {
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_dd9a5a7a-0eef-42a5-b14b-1e4e829c0291",
+                "name": "Digital event identifier"
+              }
             ]
           },
           {
             "column": "evt_id",
             "assigned": [
               {
-                "name": "Digital event identifier",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_dd9a5a7a-0eef-42a5-b14b-1e4e829c0291"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_dd9a5a7a-0eef-42a5-b14b-1e4e829c0291",
+                "name": "Digital event identifier"
               }
             ],
             "suggested": [],
@@ -667,14 +676,14 @@
       },
       {
         "name": "campaign_daily_performance",
-        "id": "01a10bff-1684-75af-a6a7-2b6e7ec0dcf7",
+        "id": "01a10c95-a57b-762d-a569-e1656a26af2d",
         "columns": [
           {
             "column": "campaign_id",
             "assigned": [
               {
-                "name": "Marketing campaign identifier",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_de50a663-ecf3-400a-9d5e-94494f8ba561"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_de50a663-ecf3-400a-9d5e-94494f8ba561",
+                "name": "Marketing campaign identifier"
               }
             ],
             "suggested": [],
@@ -684,8 +693,8 @@
             "column": "conversions",
             "assigned": [
               {
-                "name": "Daily booking-created conversion count",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_de319c2f-7c3e-4fd1-a598-2fedb7bfd98a"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_de319c2f-7c3e-4fd1-a598-2fedb7bfd98a",
+                "name": "Daily booking-created conversion count"
               }
             ],
             "suggested": [],
@@ -695,8 +704,8 @@
             "column": "campaign_name",
             "assigned": [
               {
-                "name": "Marketing campaign name",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_447db31b-99a5-4c3b-a46c-a55916108bc8"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_447db31b-99a5-4c3b-a46c-a55916108bc8",
+                "name": "Marketing campaign name"
               }
             ],
             "suggested": [],
@@ -706,8 +715,8 @@
             "column": "performance_date",
             "assigned": [
               {
-                "name": "Conversion-cohort performance date",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_183d11d1-13ef-4049-bdcd-87e7e2661901"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_183d11d1-13ef-4049-bdcd-87e7e2661901",
+                "name": "Conversion-cohort performance date"
               }
             ],
             "suggested": [],
@@ -717,8 +726,8 @@
             "column": "confirmed_revenue",
             "assigned": [
               {
-                "name": "Paid booking amount by conversion cohort",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_48ce057b-0a9d-442b-a99f-1db4588df150"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_48ce057b-0a9d-442b-a99f-1db4588df150",
+                "name": "Paid booking amount by conversion cohort"
               }
             ],
             "suggested": [],
@@ -728,8 +737,8 @@
             "column": "contactable_converters",
             "assigned": [
               {
-                "name": "Currently opted-in converter subjects per campaign day",
-                "id": "42aac6c4-6952-4a76-b59c-607781992269_e44c3e64-a120-4a7c-8629-ecbcd7421c96"
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_e44c3e64-a120-4a7c-8629-ecbcd7421c96",
+                "name": "Currently opted-in converter subjects per campaign day"
               }
             ],
             "suggested": [],

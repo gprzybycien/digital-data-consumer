@@ -1,13 +1,15 @@
 # Marketing consumer extension
 
-Published and deployed 2026-10-05 to the existing `wxdi_data_consumer` in
-`pm-steward-syd`. All 33 tests pass. The mapping is pinned to GitHub commit
-`f18abf52283f102c9eb6ae805d3c0f971d91a123` with verified SHA-256 readback.
-An initial smoke test exposed premature snapshot claims; the deployed correction
-requires live product, glossary and asset checks and explicitly labels GitHub
-search results as unverified historical candidates. Retest evidence is recorded
-in the local implementation-status file. Administrative credential readback is
-masked; release publication runs inside WxO using `github_snapshot_creds`.
+Release refresh 2026-10-05: verified published Performance Marketing 1.0.3
+(`01a10c95-b307-75fb-86f4-b741fd76491a`) through wxDI MCP. Contract retrieval
+succeeded; a deterministically generated glossary query returned 28 published
+terms. All five DPH assets' 29 active column assignments were read live. The
+verifier passes all five recipes against those actual live payloads.
+Context tools now generate exact glossary, product, contract and asset arguments,
+and reject summarized product payloads. This avoids the earlier malformed query
+and incorrect retired-version contract request. Commit/digest pins are recorded
+in release-binding.json after publication. Full deployed chat verification is
+recorded separately in implementation-status.json.
 
 ## Changes
 

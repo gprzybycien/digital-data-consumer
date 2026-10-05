@@ -56,7 +56,7 @@ class MarketingContextTests(unittest.TestCase):
         self.assertEqual('unverified', result['formal_glossary_relationships'])
 
     def test_changed_version_rejects_snapshot(self):
-        product=copy.deepcopy(self.product);product['data_product_details']['version']='1.0.3'
+        product=copy.deepcopy(self.product);product['data_product_details']['version']='99.0.0'
         result=self.verify(product=product,assets=[])
         self.assertFalse(result['discovery_verified']);self.assertEqual([],result['verified_snapshot_fallback'])
 
@@ -103,6 +103,22 @@ class MarketingContextTests(unittest.TestCase):
         self.assertFalse(result['current_state_verified'])
         self.assertTrue(result['verification_required'])
         self.assertEqual('historical_snapshot_not_live_verified', result['relationship_evidence']['column_term_assignments'])
+
+    def test_generated_glossary_query_roundtrips(self):
+        with patch.object(module, '_load', return_value=self.mapping):
+            result = invoke('read_use_case_context', 'campaign_engagement')
+        args = result['live_glossary_query_arguments']
+        query = json.loads(args['gs_query'])
+        self.assertEqual('category', args['auth_scope'])
+        self.assertEqual(200, query['size'])
+        self.assertEqual(self.mapping['glossary_scope']['category_id'], query['query']['bool']['filter'][1]['term']['categories.primary_category_id'])
+        self.assertEqual(self.mapping['product']['version_id'], result['live_contract_arguments']['data_product_version_id'])
+        self.assertEqual('available', result['live_contract_arguments']['data_product_state'])
+
+    def test_summarized_product_payload_is_rejected(self):
+        result = self.verify(product={'id': self.mapping['product']['version_id'], 'state': 'available'})
+        self.assertFalse(result['success'])
+        self.assertIn('complete', result['error'])
 
     def test_unknown_recipe_fails(self):
         with patch.object(module,'_load',return_value=self.mapping):

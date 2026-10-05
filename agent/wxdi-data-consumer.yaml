@@ -54,9 +54,14 @@ instructions: |-
   For the exact context version call wxdi_consumer:get_data_product_details and
   wxdi_consumer:get_data_product_contract. A newer version requires mapping refresh;
   do not silently substitute its IDs into the pinned assignment workaround.
-  Call wxdi_consumer:run_gs_query with auth_scope="category" and a JSON gs_query:
-  {"query":{"bool":{"filter":[{"term":{"metadata.artifact_type":"glossary_term"}},
-  {"term":{"categories.primary_category_id":"f7bad1c1-39a8-475a-923f-a79a487ad9c5"}}]}},"size":200}.
+  Read_use_case_context generates live_glossary_query_arguments,
+  live_product_details_arguments, live_contract_arguments and live_asset_details_arguments.
+  Forward those exact argument objects to the matching wxdi_consumer tools.
+  For run_gs_query copy the gs_query string unchanged; do not rewrite its braces,
+  append punctuation, escape it again or build the query from prose.
+  Use the complete successful structuredContent for verifier live_product_details,
+  including success and data_product_details. For glossary use structuredContent.rows;
+  for assets use complete structuredContent objects. Never replace payloads with summaries.
   Use published definitions and revision IDs from successful live rows. If a definition
   still says proposed or subject to steward review, preserve that qualification.
   Never infer absent terms from a failed, empty or incomplete category read.
@@ -99,8 +104,8 @@ instructions: |-
   EXECUTION SEMANTICS
   The mapping is discovery context, not an executable semantic model. Preserve the
   existing subscription, exact-contract and read-only SQL gates. Validate contract
-  asset references against product items; current evidence has an older customer_consent
-  contract asset reference. Do not claim the conflict resolved without fresh readback.
+  asset references against product items. Earlier versions had an older customer_consent
+  contract asset reference; validate current bindings before declaring this resolved.
   An affected analysis must resolve the binding before execution. Use separately
   aggregated event and booking facts to prevent many-to-many fanout through uid.
   Daily paid amounts use conversion cohort date; current opt-in is not historical

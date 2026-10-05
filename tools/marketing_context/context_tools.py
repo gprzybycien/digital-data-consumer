@@ -44,6 +44,15 @@ def _validate(mapping):
     return mapping
 
 
+def _glossary_query_arguments(mapping):
+    # Generate JSON once in code; chat must forward this string unchanged.
+    query = {'query': {'bool': {'filter': [
+        {'term': {'metadata.artifact_type': 'glossary_term'}},
+        {'term': {'categories.primary_category_id': mapping['glossary_scope']['category_id']}}
+    ]}}, 'size': 200}
+    return {'auth_scope': 'category', 'gs_query': json.dumps(query, separators=(',', ':'))}
+
+
 def _load():
     creds = connections.key_value('github_snapshot_creds')
     token = creds.get('access_token') or creds.get('token')
@@ -113,6 +122,10 @@ def read_use_case_context(use_case_id: str) -> Dict:
         if recipe is None:
             raise ValueError('Unknown Marketing use-case ID.')
         return {'success': True, 'use_case': recipe, 'product': mapping['product'],
+                'live_glossary_query_arguments': _glossary_query_arguments(mapping),
+                'live_product_details_arguments': {'data_product_version_id': mapping['product']['version_id']},
+                'live_contract_arguments': {'data_product_version_id': mapping['product']['version_id'], 'data_product_state': 'available'},
+                'live_asset_details_arguments': [{'asset': a['id'], 'catalog': mapping['product']['catalog_id'], 'project': None} for a in mapping['assignment_workaround']['assets'] if a['name'] in recipe['assets']],
                 'terms': {name: mapping['terms'][name] for name in recipe['term_names']},
                 'glossary_scope': mapping['glossary_scope'], 'domain': mapping['domain'],
                 'industry_reference': mapping['industry_reference'],
@@ -132,7 +145,11 @@ def verify_use_case_context(use_case_id: str, live_product_details: Dict, live_g
         if recipe is None:
             raise ValueError('Unknown Marketing use-case ID.')
         product = mapping['product']
-        details = live_product_details.get('data_product_details', {})
+        if 'structuredContent' in live_product_details:
+            live_product_details = live_product_details['structuredContent']
+        if not isinstance(live_product_details.get('data_product_details'), dict):
+            raise ValueError('Pass the complete successful get_data_product_details structuredContent payload, including success and data_product_details; do not summarize it.')
+        details = live_product_details['data_product_details']
         checks = []
         same_version = (live_product_details.get('success') is True and
                         details.get('id', '').split('@')[0] == product['version_id'] and
