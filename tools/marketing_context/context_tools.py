@@ -99,7 +99,7 @@ def search_use_case_context(domain: str, intent: str, limit: int = 5) -> Dict:
         return {'success': True, 'glossary_scope': mapping['glossary_scope'], 'domain': mapping['domain'],
                 'industry_reference': mapping['industry_reference'], 'candidate_product': mapping['product'],
                 'use_cases': [{k: u[k] for k in ('id', 'name', 'industry_process_ids', 'term_names', 'measure_names', 'assets', 'time_basis', 'limitations')} for u in ranked[:limit]],
-                'gaps': mapping['gaps'], 'relationship_evidence': mapping['relationship_evidence'], **_provenance()}
+                'verification_required': True, 'current_state_verified': False, 'required_next_step': 'read_use_case_context, live wxDI product/glossary/asset reads, then verify_use_case_context before claims of current availability or assignments', 'gaps': mapping['gaps'], 'relationship_evidence': {**mapping['relationship_evidence'], 'column_term_assignments': 'historical_snapshot_not_live_verified'}, **_provenance()}
     except (ValueError, KeyError, TypeError, requests.RequestException):
         return _error(ValueError('Could not read or validate the pinned context. No live availability established.'))
 
@@ -118,7 +118,7 @@ def read_use_case_context(use_case_id: str) -> Dict:
                 'industry_reference': mapping['industry_reference'],
                 'assignment_workaround': {**{k: v for k, v in mapping['assignment_workaround'].items() if k != 'assets'},
                     'assets': [a for a in mapping['assignment_workaround']['assets'] if a['name'] in recipe['assets']]},
-                'relationship_evidence': mapping['relationship_evidence'], **_provenance()}
+                'relationship_evidence': {**mapping['relationship_evidence'], 'column_term_assignments': 'historical_snapshot_not_live_verified'}, **_provenance()}
     except (ValueError, KeyError, TypeError, requests.RequestException) as exc:
         return _error(exc)
 

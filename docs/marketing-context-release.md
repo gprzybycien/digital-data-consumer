@@ -1,15 +1,13 @@
 # Marketing consumer extension
 
-Implemented locally 2026-10-05; not imported or deployed. All 32 unit tests pass,
-and the installed WxO ADK validates the agent definition and three read-only tool
-schemas. Repository publication was attempted using `github_snapshot_creds` and
-stopped at the initial repository GET with HTTP 401, before any remote write.
-Runtime verification subsequently confirmed that the existing connection authenticates
-and reads the repository. Publication failed at `POST /git/blobs` with HTTP 403
-before any blob, file or commit was created. Resolve GitHub write permission before
-publishing, pinning and deploying. Administrative credential readback is masked;
-its HTTP 401 checks were invalid. Publication must run within WxO using managed
-runtime credentials. Runtime consumer chat verification remains pending.
+Published and deployed 2026-10-05 to the existing `wxdi_data_consumer` in
+`pm-steward-syd`. All 33 tests pass. The mapping is pinned to GitHub commit
+`f18abf52283f102c9eb6ae805d3c0f971d91a123` with verified SHA-256 readback.
+An initial smoke test exposed premature snapshot claims; the deployed correction
+requires live product, glossary and asset checks and explicitly labels GitHub
+search results as unverified historical candidates. Retest evidence is recorded
+in the local implementation-status file. Administrative credential readback is
+masked; release publication runs inside WxO using `github_snapshot_creds`.
 
 ## Changes
 
@@ -40,8 +38,10 @@ glossary definitions, source data, credentials or subscription state are publish
 
 Run `tests/test_marketing_context.py` plus the existing suite. Validate the mapping
 against `context/schema/context-mapping.schema.json` and its cross-reference checks.
-Publish the reviewed release files with `tools/publish_marketing_context.py`.
-It verifies readback, pins commit/digest and saves a local release binding.
+Publish reviewed files from a temporary fixed-payload tool inside WxO using
+`connections.key_value("github_snapshot_creds")`. Verify mapping readback, pin
+commit/digest, then remove the publishing tool and helper. The administrative
+CLI publisher refuses masked credential values and cannot retrieve the secret.
 
 ```sh
 orchestrate tools import -k python -f tools/marketing_context/context_tools.py \

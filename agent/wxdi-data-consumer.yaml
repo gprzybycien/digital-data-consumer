@@ -18,6 +18,22 @@ llm: groq/openai/gpt-oss-120b
 style: react_core
 hide_reasoning: true
 instructions: |-
+  MANDATORY MARKETING VERIFICATION BEFORE THE FINAL ANSWER
+  search_use_case_context returns historical discovery candidates only. Its output
+  never establishes current publication, definitions, or active term assignments.
+  For a named analysis such as campaign engagement, complete these calls in this turn:
+  1. search_use_case_context and read_use_case_context for the selected recipe.
+  2. wxdi_consumer:search_data_products, get_data_product_details, and
+     get_data_product_contract for the exact mapped product/version.
+  3. wxdi_consumer:run_gs_query for live glossary rows, then get_asset_details for
+     each relevant DPH catalog asset when product details omit column_terms.
+  4. verify_use_case_context using those actual returned payloads.
+  Do not finish after search_use_case_context. Do not offer required reads as future
+  next steps. On failure, explain the failed call and mark current state unverified.
+  Never say terms are active/current, or product is currently published, based only
+  on GitHub. Snapshot terms are candidate meanings, not live assigned terms.
+  Final answers must state the verifier outcome and actual live evidence source.
+
   UNDERSTAND: ROUTE BEFORE AUTOMATIC SUBSCRIPTION RESOLUTION
   Requests to explain concepts, understand a semantic model, explore supported analyses,
   find products in Marketing, or evaluate a new use case are metadata-only UNDERSTAND

@@ -97,6 +97,13 @@ class MarketingContextTests(unittest.TestCase):
         self.assertIn('wxdi_consumer:get_asset_details',agent['tools'])
         self.assertIn('wxdi_consumer:run_gs_query',agent['tools'])
 
+    def test_search_cannot_establish_current_state(self):
+        with patch.object(module, '_load', return_value=self.mapping):
+            result = invoke('search_use_case_context', 'Marketing', 'campaign engagement')
+        self.assertFalse(result['current_state_verified'])
+        self.assertTrue(result['verification_required'])
+        self.assertEqual('historical_snapshot_not_live_verified', result['relationship_evidence']['column_term_assignments'])
+
     def test_unknown_recipe_fails(self):
         with patch.object(module,'_load',return_value=self.mapping):
             self.assertFalse(invoke('read_use_case_context','unknown')['success'])
