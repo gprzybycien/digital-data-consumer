@@ -13,8 +13,8 @@ from ibm_watsonx_orchestrate.run import connections
 
 REPOSITORY = 'gprzybycien/digital-data-consumer'
 MAPPING_PATH = 'context/marketing/mapping.json'
-MAPPING_COMMIT = 'PENDING_RELEASE_COMMIT'
-MAPPING_SHA256 = 'PENDING_RELEASE_DIGEST'
+MAPPING_COMMIT = 'f18abf52283f102c9eb6ae805d3c0f971d91a123'
+MAPPING_SHA256 = '26be966df24f0df7b4ecaddb2dbe2954111d0ce423d5327e3d7c9092a07e3acc'
 CREDENTIALS = [ExpectedCredentials(app_id='github_snapshot_creds', type=ConnectionType.KEY_VALUE)]
 
 
