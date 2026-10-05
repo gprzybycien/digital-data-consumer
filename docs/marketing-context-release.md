@@ -63,3 +63,10 @@ Known outstanding content gaps are not silently repaired: ODCS descriptions,
 customer_consent contract binding, formal glossary relationships, APQC edition,
 currency/timezone and validated metric results. The agent reports these gaps and
 does not claim query readiness from discovery verification.
+
+Runtime compatibility: flow nodes declare explicit input schemas so the SDK does
+not add an unsupported `data` argument. Catalog-only asset calls pass an empty
+project string because this runtime drops a mapped null, whereas the MCP tool
+requires the project argument. wxDI MCP confirmed that this catalog lookup works.
+The verifier accepts both flow `data` envelopes and MCP `structuredContent`.
+All 37 unit tests pass.

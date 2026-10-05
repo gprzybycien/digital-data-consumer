@@ -1,7 +1,7 @@
 # Marketing discovery context
 
 `mapping.json` contains five local Marketing recipes, 28 glossary ID/revision/digest
-references and 29 verified column-term bindings for Performance Marketing 1.0.2.
+references and 29 verified column-term bindings for Performance Marketing 1.0.3.
 The only glossary category is **Marketing DPH**. No subcategories are created or
 required. The parent Marketing domain hierarchy and native DPH use-case taxonomy
 remain unverified. APQC identifiers are local process alignment with an unpinned
@@ -25,14 +25,16 @@ When the product-details tool exposes column terms, the verifier automatically
 prefers them. Remove the snapshot section and extra asset-read instructions in a
 reviewed subsequent release, updating schema and tests together.
 
-Known gaps: ODCS column descriptions are absent; the customer_consent contract
-asset ID differs from the current item; formal glossary relationships, currency,
+Known gaps: ODCS column descriptions are absent; contract
+asset IDs differ from the current DPH items; formal glossary relationships, currency,
 timezone and approved calculation results remain unverified. Discovery does not
 authorize subscription creation or SQL.
 
 To release: validate mapping/schema and agent tests; publish only reviewed release
-files with `tools/publish_marketing_context.py`; pin its returned commit/digest;
-import the three Python tools with `--app-id github_snapshot_creds`; import and
+files through a fixed-payload publisher inside WxO using the existing connection;
+pin its returned commit/digest;
+import the three Python tools with `--app-id github_snapshot_creds` and the
+verification flow with `-k flow`; import and
 deploy the consumer agent after draft validation. Never change the connection's
 credentials or permission scope as part of this process.
 

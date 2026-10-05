@@ -38,7 +38,7 @@ class GlossaryArgs(BaseModel):
 class AssetArgs(BaseModel):
     asset: str
     catalog: str
-    project: Optional[str] = None
+    project: str = ''
 
 
 class VerifyArgs(Request):
@@ -67,7 +67,7 @@ def verify_marketing_use_case_live(aflow: Flow) -> Flow:
         node = aflow.tool('wxdi_consumer:get_asset_details', name='asset_'+item['name'], input_schema=AssetArgs, output_schema=AnyOutput)
         node.map_input('asset', repr(item['id']))
         node.map_input('catalog', repr(mapping['product']['catalog_id']))
-        node.map_input('project', 'None')
+        node.map_input('project', repr(''))
         assets.append(node)
     verify = aflow.tool('verify_use_case_context', name='verify', input_schema=VerifyArgs, output_schema=AnyOutput)
     verify.map_input('use_case_id', 'flow.input.use_case_id')

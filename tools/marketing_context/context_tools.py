@@ -85,6 +85,18 @@ def _provenance():
             'authority': 'curated_crosswalk; live wxDI state must be checked'}
 
 
+def _unwrap_payload(payload):
+    # WxO flow tasks may wrap body data; MCP calls may wrap structuredContent.
+    for _ in range(3):
+        if isinstance(payload.get('structuredContent'), dict):
+            payload = payload['structuredContent']
+        elif 'success' not in payload and isinstance(payload.get('data'), dict):
+            payload = payload['data']
+        else:
+            break
+    return payload
+
+
 def _error(exc):
     message = str(exc) if isinstance(exc, ValueError) else 'Context unavailable; do not infer absent products or terms.'
     return {'success': False, 'error': message, **_provenance()}
@@ -145,8 +157,8 @@ def verify_use_case_context(use_case_id: str, live_product_details: Dict, live_g
         if recipe is None:
             raise ValueError('Unknown Marketing use-case ID.')
         product = mapping['product']
-        if 'structuredContent' in live_product_details:
-            live_product_details = live_product_details['structuredContent']
+        live_product_details = _unwrap_payload(live_product_details)
+        live_asset_details = [_unwrap_payload(a) for a in live_asset_details]
         if not isinstance(live_product_details.get('data_product_details'), dict):
             raise ValueError('Pass the complete successful get_data_product_details structuredContent payload, including success and data_product_details; do not summarize it.')
         details = live_product_details['data_product_details']

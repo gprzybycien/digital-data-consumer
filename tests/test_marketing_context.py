@@ -135,6 +135,10 @@ class MarketingContextTests(unittest.TestCase):
         self.assertIn("'flow.product.output'", source)
         self.assertIn("'flow.glossary.output.rows'", source)
 
+    def test_flow_data_envelopes_preserve_live_verification(self):
+        result = self.verify(product={'data': self.product}, assets=[{'data': a} for a in self.assets])
+        self.assertTrue(result['discovery_verified'])
+
     def test_unknown_recipe_fails(self):
         with patch.object(module,'_load',return_value=self.mapping):
             self.assertFalse(invoke('read_use_case_context','unknown')['success'])
