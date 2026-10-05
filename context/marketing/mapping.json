@@ -1,0 +1,742 @@
+{
+  "schema_version": "1.0",
+  "id": "marketing-context",
+  "status": "active",
+  "authority": "curated_discovery_crosswalk_not_platform_state",
+  "industry_reference": {
+    "framework": "APQC Process Classification Framework",
+    "edition_status": "not_pinned",
+    "source_url": "https://www.apqc.org/resources/benchmarking/open-standards-benchmarking/measures/marketing-reach-b2b-customers",
+    "note": "Local process alignment; edition unverified, not APQC-certified."
+  },
+  "domain": {
+    "name": "Marketing",
+    "parent_id": null,
+    "hierarchy_status": "unverified",
+    "product_domain_name": "Performance Marketing",
+    "product_domain_id": "01a0f372-99b4-7566-beb3-65c6a29b6c3f"
+  },
+  "glossary_scope": {
+    "name": "Marketing DPH",
+    "category_id": "f7bad1c1-39a8-475a-923f-a79a487ad9c5",
+    "include_subcategories": false,
+    "note": "Flat category only; no subcategory refactor."
+  },
+  "terms": {
+    "Planned campaign budget": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_cbbb6b7b-876f-4285-b6fa-0a4acc5050d0",
+      "revision_id": "db8868c1-8760-4c23-97e6-09eef5639353_0",
+      "definition_sha256": "240c37ff361681c80f8f2fff42ccd48c7ba3dcced79bc9beb95fe5702af8b1ce",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Paid booking amount by conversion cohort": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_48ce057b-0a9d-442b-a99f-1db4588df150",
+      "revision_id": "c0ad7524-57ee-4d42-8ac9-d96ea1f96c0a_0",
+      "definition_sha256": "d6476ff26e36ca475bbbc2f5dccf40b86733fcd393fed8a91f1736e8644d38c6",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Marketing campaign identifier": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_de50a663-ecf3-400a-9d5e-94494f8ba561",
+      "revision_id": "0701514e-2339-416e-9a9f-6ee3930059a8_0",
+      "definition_sha256": "87d264aacbd7d73eef6d191545fd89d418a5520106188c73a0990b9e97a60ab6",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Daily booking-created conversion count": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_de319c2f-7c3e-4fd1-a598-2fedb7bfd98a",
+      "revision_id": "22b09571-c3ec-46af-b332-0ac741be86d2_0",
+      "definition_sha256": "598645c0c764b208dba079f6b47e9852608ce58a7373f3b508369da83958b195",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Recorded click count": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_d8822f59-a036-4459-bf00-f2495d9b49ea",
+      "revision_id": "5578bb4b-af39-4951-a7cd-761efe505bc6_0",
+      "definition_sha256": "8884d0108e3773ab31e6620a6a61af120cb77d167be2d80bbb3e9e0f7f9546fe",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Recorded marketing opt-in state": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_65240c11-5fab-4fd6-9d21-b0a7c9fa9bfe",
+      "revision_id": "ec7d82ea-9df8-42d3-bce3-b854be3967d7_0",
+      "definition_sha256": "cf77e4a4ba9c7ae3b0df9a437ff81532c6f5de578d88efb5f755d7faabe68767",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Digital event identifier": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_dd9a5a7a-0eef-42a5-b14b-1e4e829c0291",
+      "revision_id": "729976eb-c528-40d4-ad7a-462364cba6b1_0",
+      "definition_sha256": "7e21901a5774c86955f76d7944158ebb6df2f6a11350f52737174297f64aaefd",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Consent state update timestamp": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_980eb6f7-fccc-4038-a356-2b25f3dfa8ec",
+      "revision_id": "800c7ae8-b3ee-4b06-a69b-d4cb413dcbe9_0",
+      "definition_sha256": "afc8d9bd1b47716a60b1942297fef43dae92e7e1a2d83b4a3f1ebf054da624f6",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Recorded impression count": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_2613af7f-84c3-4cb9-a763-501097db693d",
+      "revision_id": "95c25dcc-abb1-488c-a547-37d1f49f6bfa_0",
+      "definition_sha256": "c2d2ac7d5fd6534ba8cc6e353d73c109f7462c9864c23635e06a052f7810f1ab",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Paid booking count": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_737b855b-1e9e-4171-b031-5fb953370140",
+      "revision_id": "54a43df4-d976-49cf-9b0b-3d454b0d1943_0",
+      "definition_sha256": "85beacd6b4251ce1dd0966475ab2dcfff0f2d6cb794f790d4490f09bd1e344c8",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Digital event type": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_68740022-2188-40a4-81db-7c8c1b6ab248",
+      "revision_id": "083654f2-3868-4285-9804-77bdfd475c47_0",
+      "definition_sha256": "4974e04eca51e3c2efc8138a293ebc91a1574d0c5f5ce4d53d047cb4ab9fcab7",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Payment completion timestamp": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_b47b877f-118f-45f3-8f91-a4dd047be321",
+      "revision_id": "8a61e858-2d33-405d-b9ee-a0906b5c24c1_0",
+      "definition_sha256": "645b119bcba9e80655071fe25574850f913d724c92130ab5e18d484df6fa62db",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Paid booking": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_ec97b7eb-d3df-4129-9c77-6144e44bba59",
+      "revision_id": "bd53ea3c-f1bd-4969-bb58-2da041d4c994_0",
+      "definition_sha256": "cb80d22e90625043fd2f5503b34f602df1b735e8f6c34992103a971f96325ee5",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Recorded booking amount": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_1cf24ca8-0d0b-4a54-95d7-5198cb513ffd",
+      "revision_id": "cc21e686-cef4-46f7-9999-2019b9e9ba52_0",
+      "definition_sha256": "d6f177601e2aaa006f40bf9315e5fe4e4f3cf7d66db03b074622749d02c0dfa5",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Recorded conversion timestamp": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_89bff308-522b-43cf-80ff-d03d6a96dfd2",
+      "revision_id": "ee29c10c-df77-4128-9700-126c82531360_0",
+      "definition_sha256": "3d67bbc318887a295a39f23ca204f0fa1c0418fd30aa318b5e7a778017f978ec",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Marketing channel": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_c1318d05-e126-4d92-8be8-9387429ae5ee",
+      "revision_id": "751fbea4-d03a-4237-8a37-4f68d797aae9_0",
+      "definition_sha256": "120e98857e0f805c5badea60fa19c05d6270315cfa30e2f6d99209fcdabb7551",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Campaign start date": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_3cf57151-33e2-413a-b0ab-610aec879910",
+      "revision_id": "c4326e09-8082-4534-968e-30d51a39364d_0",
+      "definition_sha256": "92dad347895a6652fd388ffbce70fe9ac05ec7caa5eeadb9d7d053dfbd16238d",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Campaign end date": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_a8f9c3d9-8382-4236-a956-cb9c0a14624c",
+      "revision_id": "31416b70-bd14-46a2-b0c3-931fb94c55fc_0",
+      "definition_sha256": "c74db9d9d7e7fdc0f6735e34dee7343e9735b76b55d4331786b50cb754b5bcf7",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Marketing email address": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_8ae425f8-2a54-42f5-8028-f065b19882e2",
+      "revision_id": "19dd6f21-989f-4cc6-828c-8d1db28e5957_0",
+      "definition_sha256": "ba2180cbfc298c347c55bed5a2fa626a807c170db8e5269ae427da5ad563ab90",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Digital page path": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_4746e37d-5074-4792-bb19-ded79feb3041",
+      "revision_id": "fa45ddfe-e1c2-467a-af27-c66905b26127_0",
+      "definition_sha256": "ec2d5706e058914aed6ea8e42d3ca2a3f41bdf736e42d2ebb2783294bf83c267",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Booking creation timestamp": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_b40afabe-303d-4300-8cdc-3d5196d4591e",
+      "revision_id": "aa810e37-a98a-4795-988c-562ee656beed_0",
+      "definition_sha256": "75ca8b4d37bcd1dda6d9484e431df57f791090212c543bb000564f6ca77a6a1e",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Conversion-cohort performance date": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_183d11d1-13ef-4049-bdcd-87e7e2661901",
+      "revision_id": "516c64e7-78c5-4a24-b347-3c4b1024c5f9_0",
+      "definition_sha256": "fcdcf178cbc833df57fc301b755f9848681cb3d5b2b73db1de58c568b86d9116",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Marketing campaign name": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_447db31b-99a5-4c3b-a46c-a55916108bc8",
+      "revision_id": "926860b0-cffb-41ad-9cdb-be64dfbb0e8f_0",
+      "definition_sha256": "4047490993f344c0b93c764080a11d781ec709d02f1910bc129083c208fc9ecc",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Digital event timestamp": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_83ea5ff5-a194-437c-93ac-84a0bb5dbccc",
+      "revision_id": "fa69f624-c657-4f25-8809-ecf516dd15cd_0",
+      "definition_sha256": "1ac38fd4a690c8dca19d503631448e2164ee37a93da058dbddb4fb19595950a8",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Recorded campaign attribution": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_c6cbc4d5-9b40-45f4-ae53-9f83f6db419b",
+      "revision_id": "0b0967ad-0a32-457a-be4a-bb7cd2cd4ad4_0",
+      "definition_sha256": "29325899a4ec8908a873ed48d36da7f95100e6e4837378e9be45430b80802e7b",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Marketing subject identifier": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_49820067-de6c-4fcc-8fe7-bcfe5c8a5198",
+      "revision_id": "e567b58a-3086-4e89-853e-e97cb8271c25_0",
+      "definition_sha256": "14666b097027afc09658d4f23ec9763f67470f9b331db31b17bb700b8ecf60a1",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Booking conversion record identifier": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_6caf1a4b-4fce-4079-b15b-03f4885d39b9",
+      "revision_id": "14eb77e2-7f70-4013-81ab-15e5279c5309_0",
+      "definition_sha256": "d411011a83a3290e59ce83ef56ba22079b5d6f37450b1e855c678bc9dca44e97",
+      "state_at_verification": "PUBLISHED"
+    },
+    "Currently opted-in converter subjects per campaign day": {
+      "id": "42aac6c4-6952-4a76-b59c-607781992269_e44c3e64-a120-4a7c-8629-ecbcd7421c96",
+      "revision_id": "821a8c15-f516-4881-b58f-92acb2e1d62c_0",
+      "definition_sha256": "8996ea77a126c56978881d41a0e64955ba3715791479921263f89ec232fdef1b",
+      "state_at_verification": "PUBLISHED"
+    }
+  },
+  "use_cases": [
+    {
+      "id": "campaign_engagement",
+      "name": "Compare campaign engagement",
+      "keywords": [
+        "engagement",
+        "click",
+        "impression",
+        "interaction"
+      ],
+      "industry_process_ids": [
+        "10170"
+      ],
+      "industry_alignment": "local_alignment",
+      "term_names": [
+        "Digital event type",
+        "Digital event timestamp",
+        "Recorded campaign attribution",
+        "Marketing channel",
+        "Recorded click count",
+        "Recorded impression count"
+      ],
+      "measure_names": [
+        "Recorded click count",
+        "Recorded impression count"
+      ],
+      "assets": [
+        "campaign",
+        "digital_event"
+      ],
+      "time_basis": "digital_event.ts",
+      "limitations": [
+        "Incomplete tracking funnel",
+        "Source timezone requires verification"
+      ],
+      "native_dph_use_case_id": null
+    },
+    {
+      "id": "paid_booking_performance",
+      "name": "Compare paid-booking performance",
+      "keywords": [
+        "booking",
+        "paid",
+        "payment",
+        "conversion"
+      ],
+      "industry_process_ids": [
+        "10170"
+      ],
+      "industry_alignment": "local_alignment",
+      "term_names": [
+        "Payment completion timestamp",
+        "Recorded booking amount",
+        "Recorded campaign attribution",
+        "Paid booking count",
+        "Paid booking",
+        "Booking conversion record identifier",
+        "Booking creation timestamp"
+      ],
+      "measure_names": [
+        "Paid booking count"
+      ],
+      "assets": [
+        "campaign",
+        "booking_conversion"
+      ],
+      "time_basis": "clarify_booking_creation_or_payment_completion",
+      "limitations": [
+        "No refund or net-revenue semantics",
+        "Currency requires verification"
+      ],
+      "native_dph_use_case_id": null
+    },
+    {
+      "id": "daily_booking_cohorts",
+      "name": "Track daily booking-cohort performance",
+      "keywords": [
+        "daily",
+        "cohort",
+        "performance"
+      ],
+      "industry_process_ids": [
+        "10170"
+      ],
+      "industry_alignment": "local_alignment",
+      "term_names": [
+        "Conversion-cohort performance date",
+        "Daily booking-created conversion count",
+        "Paid booking amount by conversion cohort"
+      ],
+      "measure_names": [
+        "Daily booking-created conversion count",
+        "Paid booking amount by conversion cohort"
+      ],
+      "assets": [
+        "campaign_daily_performance"
+      ],
+      "time_basis": "conversion_cohort_date",
+      "limitations": [
+        "Not payment-date revenue",
+        "Handle null-date placeholder explicitly"
+      ],
+      "native_dph_use_case_id": null
+    },
+    {
+      "id": "planned_budgets",
+      "name": "Review planned campaign budgets",
+      "keywords": [
+        "budget",
+        "planned",
+        "schedule"
+      ],
+      "industry_process_ids": [
+        "10157"
+      ],
+      "industry_alignment": "local_alignment",
+      "term_names": [
+        "Planned campaign budget"
+      ],
+      "measure_names": [],
+      "assets": [
+        "campaign"
+      ],
+      "time_basis": "campaign_schedule",
+      "limitations": [
+        "No actual spend or ROI",
+        "Currency requires verification"
+      ],
+      "native_dph_use_case_id": null
+    },
+    {
+      "id": "current_opt_in_converters",
+      "name": "Examine current opt-in among converters",
+      "keywords": [
+        "consent",
+        "opt-in",
+        "contactable",
+        "subjects"
+      ],
+      "industry_process_ids": [
+        "10153"
+      ],
+      "industry_alignment": "partial_support_local_use_case",
+      "term_names": [
+        "Marketing subject identifier",
+        "Recorded marketing opt-in state",
+        "Currently opted-in converter subjects per campaign day"
+      ],
+      "measure_names": [
+        "Currently opted-in converter subjects per campaign day"
+      ],
+      "assets": [
+        "booking_conversion",
+        "customer_consent",
+        "campaign_daily_performance"
+      ],
+      "time_basis": "current_consent_and_booking_cohort",
+      "limitations": [
+        "Not historical consent or outreach eligibility",
+        "Daily distinct counts are not additive"
+      ],
+      "native_dph_use_case_id": null
+    }
+  ],
+  "gaps": [
+    "Actual advertising spend and ROI require new governed spend data.",
+    "No segment membership: audience segmentation is unsupported.",
+    "Current consent does not establish historical consent or outreach eligibility."
+  ],
+  "relationship_evidence": {
+    "glossary_relationships": "unverified",
+    "use_case_product_links": "curated_mapping",
+    "column_term_assignments": "verified_snapshot_workaround",
+    "sql_joins": "require_contract_or_approved_model"
+  },
+  "product": {
+    "name": "Performance Marketing",
+    "family_id": "05f20313-2b04-4d14-a86c-29c6449ffa4a",
+    "version": "1.0.2",
+    "version_id": "01a10bfc-b49d-7071-9169-5f47f81d8e64",
+    "catalog_id": "a22d014d-82d1-4374-9de2-4478e350a5f6",
+    "url": "https://dataplatform.cloud.ibm.com/dpx/?page_id=UI_PRODUCT_DETAIL_PAGE&productState=available&version_id=01a10bfc-b49d-7071-9169-5f47f81d8e64&context=df"
+  },
+  "assignment_workaround": {
+    "enabled": true,
+    "verified_at": "2026-10-05",
+    "source_tool": "get_asset_details",
+    "scope": "exact_product_version_and_asset_ids",
+    "removal_condition": "get_data_product_details exposes verified column_terms; remove snapshot and verifier fallback together",
+    "assets": [
+      {
+        "name": "customer_consent",
+        "id": "01a10bff-1684-76f0-946c-3339bc219545",
+        "columns": [
+          {
+            "column": "uid",
+            "assigned": [
+              {
+                "name": "Marketing subject identifier",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_49820067-de6c-4fcc-8fe7-bcfe5c8a5198"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "email_addr",
+            "assigned": [
+              {
+                "name": "Marketing email address",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_8ae425f8-2a54-42f5-8028-f065b19882e2"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "marketing_opt_in",
+            "assigned": [
+              {
+                "name": "Recorded marketing opt-in state",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_65240c11-5fab-4fd6-9d21-b0a7c9fa9bfe"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "consent_updated_ts",
+            "assigned": [
+              {
+                "name": "Consent state update timestamp",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_980eb6f7-fccc-4038-a356-2b25f3dfa8ec"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          }
+        ]
+      },
+      {
+        "name": "booking_conversion",
+        "id": "01a10bff-1684-742f-9855-6a3d4dbd7bb8",
+        "columns": [
+          {
+            "column": "uid",
+            "assigned": [
+              {
+                "name": "Marketing subject identifier",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_49820067-de6c-4fcc-8fe7-bcfe5c8a5198"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "cmp_id",
+            "assigned": [
+              {
+                "name": "Recorded campaign attribution",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_c6cbc4d5-9b40-45f4-ae53-9f83f6db419b"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "conversion_id",
+            "assigned": [
+              {
+                "name": "Booking conversion record identifier",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_6caf1a4b-4fce-4079-b15b-03f4885d39b9"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "conversion_ts",
+            "assigned": [
+              {
+                "name": "Recorded conversion timestamp",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_89bff308-522b-43cf-80ff-d03d6a96dfd2"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "revenue_amount",
+            "assigned": [
+              {
+                "name": "Recorded booking amount",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_1cf24ca8-0d0b-4a54-95d7-5198cb513ffd"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "booking_created_ts",
+            "assigned": [
+              {
+                "name": "Booking creation timestamp",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_b40afabe-303d-4300-8cdc-3d5196d4591e"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "payment_completed_ts",
+            "assigned": [
+              {
+                "name": "Payment completion timestamp",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_b47b877f-118f-45f3-8f91-a4dd047be321"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          }
+        ]
+      },
+      {
+        "name": "campaign",
+        "id": "01a10bff-1684-74ef-b3fa-9af934ccc6cd",
+        "columns": [
+          {
+            "column": "end_date",
+            "assigned": [
+              {
+                "name": "Campaign end date",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_a8f9c3d9-8382-4236-a956-cb9c0a14624c"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "start_date",
+            "assigned": [
+              {
+                "name": "Campaign start date",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_3cf57151-33e2-413a-b0ab-610aec879910"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "campaign_id",
+            "assigned": [
+              {
+                "name": "Marketing campaign identifier",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_de50a663-ecf3-400a-9d5e-94494f8ba561"
+              }
+            ],
+            "suggested": [],
+            "rejected": [
+              "Recorded campaign attribution"
+            ]
+          },
+          {
+            "column": "channel_code",
+            "assigned": [
+              {
+                "name": "Marketing channel",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_c1318d05-e126-4d92-8be8-9387429ae5ee"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "campaign_name",
+            "assigned": [
+              {
+                "name": "Marketing campaign name",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_447db31b-99a5-4c3b-a46c-a55916108bc8"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "planned_budget",
+            "assigned": [
+              {
+                "name": "Planned campaign budget",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_cbbb6b7b-876f-4285-b6fa-0a4acc5050d0"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          }
+        ]
+      },
+      {
+        "name": "digital_event",
+        "id": "01a10bff-1684-74d2-b7b6-29c3cfb814dc",
+        "columns": [
+          {
+            "column": "ts",
+            "assigned": [
+              {
+                "name": "Digital event timestamp",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_83ea5ff5-a194-437c-93ac-84a0bb5dbccc"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "evt",
+            "assigned": [
+              {
+                "name": "Digital event type",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_68740022-2188-40a4-81db-7c8c1b6ab248"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "uid",
+            "assigned": [
+              {
+                "name": "Marketing subject identifier",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_49820067-de6c-4fcc-8fe7-bcfe5c8a5198"
+              }
+            ],
+            "suggested": [],
+            "rejected": [
+              "Digital event identifier"
+            ]
+          },
+          {
+            "column": "page",
+            "assigned": [
+              {
+                "name": "Digital page path",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_4746e37d-5074-4792-bb19-ded79feb3041"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "cmp_id",
+            "assigned": [
+              {
+                "name": "Recorded campaign attribution",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_c6cbc4d5-9b40-45f4-ae53-9f83f6db419b"
+              }
+            ],
+            "suggested": [],
+            "rejected": [
+              "Digital event identifier"
+            ]
+          },
+          {
+            "column": "evt_id",
+            "assigned": [
+              {
+                "name": "Digital event identifier",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_dd9a5a7a-0eef-42a5-b14b-1e4e829c0291"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          }
+        ]
+      },
+      {
+        "name": "campaign_daily_performance",
+        "id": "01a10bff-1684-75af-a6a7-2b6e7ec0dcf7",
+        "columns": [
+          {
+            "column": "campaign_id",
+            "assigned": [
+              {
+                "name": "Marketing campaign identifier",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_de50a663-ecf3-400a-9d5e-94494f8ba561"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "conversions",
+            "assigned": [
+              {
+                "name": "Daily booking-created conversion count",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_de319c2f-7c3e-4fd1-a598-2fedb7bfd98a"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "campaign_name",
+            "assigned": [
+              {
+                "name": "Marketing campaign name",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_447db31b-99a5-4c3b-a46c-a55916108bc8"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "performance_date",
+            "assigned": [
+              {
+                "name": "Conversion-cohort performance date",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_183d11d1-13ef-4049-bdcd-87e7e2661901"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "confirmed_revenue",
+            "assigned": [
+              {
+                "name": "Paid booking amount by conversion cohort",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_48ce057b-0a9d-442b-a99f-1db4588df150"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          },
+          {
+            "column": "contactable_converters",
+            "assigned": [
+              {
+                "name": "Currently opted-in converter subjects per campaign day",
+                "id": "42aac6c4-6952-4a76-b59c-607781992269_e44c3e64-a120-4a7c-8629-ecbcd7421c96"
+              }
+            ],
+            "suggested": [],
+            "rejected": []
+          }
+        ]
+      }
+    ]
+  }
+}
