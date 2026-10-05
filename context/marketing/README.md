@@ -35,3 +35,7 @@ files with `tools/publish_marketing_context.py`; pin its returned commit/digest;
 import the three Python tools with `--app-id github_snapshot_creds`; import and
 deploy the consumer agent after draft validation. Never change the connection's
 credentials or permission scope as part of this process.
+
+The consumer now invokes `verify_marketing_use_case_live` (WxO flow) to preserve
+the exact generated query and full live tool results. It performs metadata reads
+only. The flow definition is in `tools/marketing_context/verify_live_flow.py`.

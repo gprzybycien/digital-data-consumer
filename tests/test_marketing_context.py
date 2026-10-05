@@ -1,4 +1,5 @@
 import copy
+import ast
 import hashlib
 import importlib.util
 import json
@@ -119,6 +120,20 @@ class MarketingContextTests(unittest.TestCase):
         result = self.verify(product={'id': self.mapping['product']['version_id'], 'state': 'available'})
         self.assertFalse(result['success'])
         self.assertIn('complete', result['error'])
+
+    def test_flow_preserves_payloads_without_language_model_nodes(self):
+        source = (ROOT/'tools/marketing_context/verify_live_flow.py').read_text()
+        tree = ast.parse(source)
+        calls = [n for n in ast.walk(tree) if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute)]
+        self.assertFalse(any(n.func.attr in ('agent', 'prompt', 'llm') for n in calls))
+        for node in calls:
+            if node.func.attr == 'tool':
+                self.assertIn('input_schema', {kw.arg for kw in node.keywords})
+                for kw in node.keywords:
+                    if kw.arg == 'name' and isinstance(kw.value, ast.Constant):
+                        self.assertNotIn(kw.value.value, ('context', 'input', 'output', 'private'))
+        self.assertIn("'flow.product.output'", source)
+        self.assertIn("'flow.glossary.output.rows'", source)
 
     def test_unknown_recipe_fails(self):
         with patch.object(module,'_load',return_value=self.mapping):

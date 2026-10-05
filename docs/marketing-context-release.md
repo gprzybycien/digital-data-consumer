@@ -5,8 +5,10 @@ Release refresh 2026-10-05: verified published Performance Marketing 1.0.3
 succeeded; a deterministically generated glossary query returned 28 published
 terms. All five DPH assets' 29 active column assignments were read live. The
 verifier passes all five recipes against those actual live payloads.
-Context tools now generate exact glossary, product, contract and asset arguments,
-and reject summarized product payloads. This avoids the earlier malformed query
+Context tools generate exact glossary, product, contract and asset arguments
+and reject summarized product payloads. The deployed agent now uses the
+`verify_marketing_use_case_live` WxO flow to forward the query and complete
+wxDI outputs deterministically, with no LLM reconstruction. This avoids the earlier malformed query
 and incorrect retired-version contract request. Commit/digest pins are recorded
 in release-binding.json after publication. Full deployed chat verification is
 recorded separately in implementation-status.json.
@@ -48,6 +50,7 @@ CLI publisher refuses masked credential values and cannot retrieve the secret.
 ```sh
 orchestrate tools import -k python -f tools/marketing_context/context_tools.py \
   -r tools/marketing_context/requirements.txt --app-id github_snapshot_creds
+orchestrate tools import -k flow -f tools/marketing_context/verify_live_flow.py
 orchestrate agents import -f agent/wxdi-data-consumer.yaml
 ```
 
