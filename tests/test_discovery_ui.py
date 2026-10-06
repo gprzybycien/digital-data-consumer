@@ -15,7 +15,7 @@ class DiscoveryUiTests(unittest.TestCase):
   with self.assertRaises(ValueError):m.show_consumer_next_steps.fn('Unknown','questions')
  def test_rollback_detaches_only_pilot_tools(self):
   import yaml
-  a=yaml.safe_load((ROOT/'agent/wxdi-data-consumer.yaml').read_text());b=yaml.safe_load((ROOT/'rollback/next-step-widget/wxdi-data-consumer.before.yaml').read_text());self.assertEqual(set(a['tools'])-set(b['tools']),{'show_consumer_next_steps','select_consumer_next_step'})
+  a=yaml.safe_load((ROOT/'agent/wxdi-data-consumer.yaml').read_text());b=yaml.safe_load((ROOT/'rollback/next-step-widget/wxdi-data-consumer.before.yaml').read_text());self.assertEqual(set(a['tools'])-set(b['tools']),{'show_consumer_next_steps','select_consumer_next_step','build_default_engagement_query','prepare_default_engagement_query'})
 
 class AreaSubmitTests(unittest.TestCase):
  def test_area_submit_returns_explanation_and_question_widget(self):

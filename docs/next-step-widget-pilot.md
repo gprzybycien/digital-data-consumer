@@ -57,3 +57,10 @@ not proof the human user has no subscription. Do not recommend duplicate orders.
 A second local checkpoint is rollback/default-answer/, containing the agent and
 tool before this default-answer refinement. The original pre-widget rollback remains
 rollback/next-step-widget/rollback.sh.
+
+Engagement default drafts now use prepare_default_engagement_query, collecting
+full live metadata, glossary and assignments plus an exact-version subscription
+search before build_default_engagement_query creates SQL. It never invents tables
+or claims execution. The three Engagement questions are deterministic; other areas
+retain the existing guarded agent query path. Actual result execution still requires
+subscription item delivery, source access, and relevant metric validation.

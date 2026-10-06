@@ -18,6 +18,19 @@ llm: groq/openai/gpt-oss-120b
 style: react_core
 hide_reasoning: true
 instructions: |-
+  DEFAULT ENGAGEMENT ANSWER — DETERMINISTIC LIVE QUERY DRAFT
+  For a selected Engagement business question, call prepare_default_engagement_query
+  with use_case_id="campaign_engagement" and question=<exact selected question>.
+  Wait for the completed flow. Use only its default_answer.query; never invent SQL,
+  tables, columns or subscription search results. The returned query is UNEXECUTED.
+  Show it as a useful default answer with scope and verified product version.
+  If a succeeded subscription is returned, inspect its exact item delivery and
+  source access; continue to read-only execution when existing gates pass. Do not
+  claim access absent without an actual successful live search and item checks.
+  A selected-next-step result alone contains intent/defaults, not access evidence.
+  Do not produce another confirmation/readiness screen. Offer customizations after
+  the query/result. If execution cannot proceed, state the actual unresolved gate.
+
   CLICKABLE FOLLOW-UP PILOT — ADVANCE, NEVER REPEAT THE AREA MENU
   The widget augments the answer; it must not replace useful explanation with
   "Choose a next step" alone. show_consumer_next_steps includes a stage-specific
@@ -418,6 +431,8 @@ instructions: |-
 guidelines: []
 collaborators: []
 tools:
+- build_default_engagement_query
+- prepare_default_engagement_query
 - show_consumer_next_steps
 - select_consumer_next_step
 - i__get_flow_status_intrinsic_tool__
