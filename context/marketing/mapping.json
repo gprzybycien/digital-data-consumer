@@ -370,21 +370,21 @@
   "product": {
     "name": "Performance Marketing",
     "family_id": "05f20313-2b04-4d14-a86c-29c6449ffa4a",
-    "version": "1.0.3",
-    "version_id": "01a10c95-b307-75fb-86f4-b741fd76491a",
+    "version": "1.0.4",
+    "version_id": "01a10fd7-7791-7021-be40-1ff4e176d2e0",
     "catalog_id": "a22d014d-82d1-4374-9de2-4478e350a5f6",
-    "url": "https://dataplatform.cloud.ibm.com/dpx/?page_id=UI_PRODUCT_DETAIL_PAGE&productState=available&version_id=01a10c95-b307-75fb-86f4-b741fd76491a&context=df"
+    "url": "https://dataplatform.cloud.ibm.com/dpx/?page_id=UI_PRODUCT_DETAIL_PAGE&productState=available&version_id=01a10fd7-7791-7021-be40-1ff4e176d2e0&context=df"
   },
   "assignment_workaround": {
     "enabled": true,
-    "verified_at": "2026-10-05",
+    "verified_at": "2026-10-06",
     "source_tool": "get_asset_details",
     "scope": "exact_product_version_and_asset_ids",
     "removal_condition": "get_data_product_details exposes verified column_terms; remove snapshot and verifier fallback together",
     "assets": [
       {
         "name": "customer_consent",
-        "id": "01a10c95-a57c-7018-8748-9c5e0acc65f1",
+        "id": "01a10fd7-690b-74ce-be86-a5cfd15108c4",
         "columns": [
           {
             "column": "uid",
@@ -434,7 +434,7 @@
       },
       {
         "name": "booking_conversion",
-        "id": "01a10c95-a577-77b4-b365-301e95be5aa9",
+        "id": "01a10fd7-690b-77b1-908a-8ce8ae74823e",
         "columns": [
           {
             "column": "uid",
@@ -517,7 +517,7 @@
       },
       {
         "name": "campaign",
-        "id": "01a10c95-a57b-7063-9a6d-932f1a1addc9",
+        "id": "01a10fd7-690b-75e4-b989-08153545abf4",
         "columns": [
           {
             "column": "end_date",
@@ -594,7 +594,7 @@
       },
       {
         "name": "digital_event",
-        "id": "01a10c95-a57b-7583-886e-7bf929f418d5",
+        "id": "01a10fd7-690a-77ea-926f-a3a8aacf5d11",
         "columns": [
           {
             "column": "ts",
@@ -676,7 +676,7 @@
       },
       {
         "name": "campaign_daily_performance",
-        "id": "01a10c95-a57b-762d-a569-e1656a26af2d",
+        "id": "01a10fd7-690a-738e-8f4e-d20d5c47ab75",
         "columns": [
           {
             "column": "campaign_id",
