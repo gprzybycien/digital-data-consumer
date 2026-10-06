@@ -76,3 +76,7 @@ future product IDs or imply this schema has already been implemented.
 
 This release changes agent interaction and domain discovery guidance. It does not
 extend the existing single-product mapping schema or create new wxDI content.
+
+Live testing required stronger rules: all discovery responses prohibit Markdown
+tables, and alternate-product recommendations require exact-version detail reads.
+Titles or search descriptions cannot establish join keys, segment fields or ROI.
