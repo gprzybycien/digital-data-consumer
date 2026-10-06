@@ -1,7 +1,7 @@
 # Marketing consumer extension
 
-Release refresh 2026-10-05: verified published Performance Marketing 1.0.3
-(`01a10c95-b307-75fb-86f4-b741fd76491a`) through wxDI MCP. Contract retrieval
+Release refresh 2026-10-06: verified published Performance Marketing 1.0.4
+(`01a10fd7-7791-7021-be40-1ff4e176d2e0`) through wxDI MCP. Contract retrieval
 succeeded; a deterministically generated glossary query returned 28 published
 terms. All five DPH assets' 29 active column assignments were read live. The
 verifier passes all five recipes against those actual live payloads.
@@ -60,7 +60,7 @@ analysis, a drifted version, and an unsupported ROI/historical-consent question.
 Use the agent owner's normal deployment command after validation.
 
 Known outstanding content gaps are not silently repaired: ODCS descriptions,
-customer_consent contract binding, formal glossary relationships, APQC edition,
+formal glossary relationships, APQC edition,
 currency/timezone and validated metric results. The agent reports these gaps and
 does not claim query readiness from discovery verification.
 
@@ -70,3 +70,8 @@ project string because this runtime drops a mapped null, whereas the MCP tool
 requires the project argument. wxDI MCP confirmed that this catalog lookup works.
 The verifier accepts both flow `data` envelopes and MCP `structuredContent`.
 All 37 unit tests pass.
+
+Version 1.0.4 readback: all five contract asset IDs and all 29 column names match
+the delivered product metadata. Contract column descriptions remain absent, its
+test status is queued, and no successful subscription is returned for this version.
+These are execution readiness limitations, not discovery verification failures.

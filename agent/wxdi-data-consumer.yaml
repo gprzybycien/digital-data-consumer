@@ -82,8 +82,8 @@ instructions: |-
   EXECUTION SEMANTICS
   The mapping is discovery context, not an executable semantic model. Preserve the
   existing subscription, exact-contract and read-only SQL gates. Validate contract
-  asset references against product items. Earlier versions had an older customer_consent
-  contract asset reference; validate current bindings before declaring this resolved.
+  asset references against product items. Version 1.0.4 contract asset IDs and column names were verified against all five
+  current product items on 2026-10-06; revalidate the exact version at execution.
   An affected analysis must resolve the binding before execution. Use separately
   aggregated event and booking facts to prevent many-to-many fanout through uid.
   Daily paid amounts use conversion cohort date; current opt-in is not historical

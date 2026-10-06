@@ -1,7 +1,7 @@
 # Marketing discovery context
 
 `mapping.json` contains five local Marketing recipes, 28 glossary ID/revision/digest
-references and 29 verified column-term bindings for Performance Marketing 1.0.3.
+references and 29 verified column-term bindings for Performance Marketing 1.0.4.
 The only glossary category is **Marketing DPH**. No subcategories are created or
 required. The parent Marketing domain hierarchy and native DPH use-case taxonomy
 remain unverified. APQC identifiers are local process alignment with an unpinned
@@ -26,7 +26,7 @@ prefers them. Remove the snapshot section and extra asset-read instructions in a
 reviewed subsequent release, updating schema and tests together.
 
 Known gaps: ODCS column descriptions are absent; contract
-asset IDs differ from the current DPH items; formal glossary relationships, currency,
+asset IDs and all 29 column names now match the current DPH items; formal glossary relationships, currency,
 timezone and approved calculation results remain unverified. Discovery does not
 authorize subscription creation or SQL.
 
@@ -41,3 +41,8 @@ credentials or permission scope as part of this process.
 The consumer now invokes `verify_marketing_use_case_live` (WxO flow) to preserve
 the exact generated query and full live tool results. It performs metadata reads
 only. The flow definition is in `tools/marketing_context/verify_live_flow.py`.
+
+Version 1.0.4 readback: all five contract asset IDs and all 29 column names match
+the delivered product metadata. Contract column descriptions remain absent, its
+test status is queued, and no successful subscription is returned for this version.
+These are execution readiness limitations, not discovery verification failures.
