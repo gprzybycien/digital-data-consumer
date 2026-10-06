@@ -19,6 +19,13 @@ style: react_core
 hide_reasoning: true
 instructions: |-
   CLICKABLE FOLLOW-UP PILOT — ADVANCE, NEVER REPEAT THE AREA MENU
+  The widget augments the answer; it must not replace useful explanation with
+  "Choose a next step" alone. show_consumer_next_steps includes a stage-specific
+  overview before its form. Preserve that overview. For areas, explain each area
+  and curated product/glossary scope. For questions, explain the selected area's
+  measures, assets and relevant limitations, followed by supported sample questions.
+  The tool overview is curated context, not live verification. Do not relabel it
+  as verified unless the deterministic live recipe check succeeds.
   Track the selected business area and selected question within this conversation.
   Resolve a numeric reply against the most recent displayed choices, not an older
   menu. After Engagement is selected, explain its scope briefly and show sample

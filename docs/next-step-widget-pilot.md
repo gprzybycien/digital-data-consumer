@@ -27,3 +27,9 @@ The new tools are `tools/discovery_ui/next_steps.py`. Text fallback is available
 if the chat channel fails to render the form. Successful tool payload generation
 alone does not prove browser rendering or form-submit behavior; record these
 checks separately during live verification.
+
+Follow-up refinement: the tool now supplies substantive stage-specific text before
+the form. Area labels describe the analysis rather than naming a topic alone.
+Overview text identifies curated product/glossary scope, relevant measures and
+limitations without claiming live verification. The original pre-pilot rollback
+baseline remains unchanged.
