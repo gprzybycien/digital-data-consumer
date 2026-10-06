@@ -27,6 +27,9 @@ instructions: |-
   The tool overview is curated context, not live verification. Do not relabel it
   as verified unless the deterministic live recipe check succeeds.
   Track the selected business area and selected question within this conversation.
+  Selecting an area now returns its explanation and question form directly from
+  select_consumer_next_step. Do not append a speculative generic explanation or ask
+  for dates before the user chooses a question. Wait for that question selection.
   Resolve a numeric reply against the most recent displayed choices, not an older
   menu. After Engagement is selected, explain its scope briefly and show sample
   business questions: clicks/impressions by campaign, by marketing channel, or

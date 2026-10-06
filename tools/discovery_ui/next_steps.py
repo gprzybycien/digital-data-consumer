@@ -97,7 +97,7 @@ def show_consumer_next_steps(area: str = '', stage: str = 'questions') -> ToolRe
         inputs=[RadioButton(name='choice', title='Next step', required=True, options=choices, option_labels=labels)],
         submit_text='Continue', cancel_text='Keep chatting',
         on_event=[ToolEvent(tool='select_consumer_next_step', parameters={'choice': ''}, map_input_to='submit'),
-                  MessageEvent(message='Continue from my selected next step returned by select_consumer_next_step. Help me understand or refine it, metadata only. Do not calculate results or create a subscription.')])
+                  MessageEvent(message='Continue from my selected next step returned by select_consumer_next_step. If I selected an area, its explanation and sample-question form have already been returned: wait for my question choice, do not ask for dates or repeat an explanation. If I selected a business question, help refine it, metadata only. Do not calculate results or create a subscription.')])
     return ToolResult(content=[TextContent(text=summary, annotations=Annotations(audience=[Role.USER]))], widget=form)
 
 @tool(permission=ToolPermission.READ_ONLY)
@@ -105,7 +105,13 @@ def select_consumer_next_step(choice: str) -> Dict:
     """Validate a submitted discovery choice and return it to the conversation. Selection is metadata-only and does not authorize SQL or subscription creation."""
     if choice not in ALLOWED:
         raise ValueError('Unknown discovery choice; use the displayed options or type a new question.')
-    return {'success': True, 'selected_next_step': choice, 'intent': 'understand_or_refine',
+    selection = {'success': True, 'selected_next_step': choice, 'intent': 'understand_or_refine',
             'sql_authorized': False, 'subscription_authorized': False,
             'next_stage': 'questions' if choice in AREAS else 'actions',
             'instruction': 'Advance within the selected area; retain context and resolve only missing period, grouping or time basis. Do not repeat the domain area menu.'}
+
+    if choice in AREAS:
+        result = show_consumer_next_steps.fn(area=choice, stage='questions').model_dump(mode='json', by_alias=True, exclude_none=True)
+        result['structuredContent'] = selection
+        return result
+    return selection
