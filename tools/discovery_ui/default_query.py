@@ -38,3 +38,36 @@ def build_default_engagement_query(question: str, verification: Dict, product: D
  version=p['data_product_details']['id'].split('@')[0]
  matches=[z for z in s.get('subscriptions',[]) if z.get('asset',{}).get('id')==version] if s.get('success') else []
  return {'success':True,'question':question,'query':query,'executed':False,'label':'UNEXECUTED query','product_version':p['data_product_details']['version'],'defaults':{'period':'all available records','limit':100,'timezone':'recorded source basis; not converted'},'subscription_search_succeeded':s.get('success') is True,'subscriptions':[{'id':z['id'],'state':z.get('state')} for z in matches],'access_note':'Inspect subscription item delivery and source SQL access before execution. Empty/failed search does not prove the user lacks a DPH subscription.','limitations':['Counts are recorded event rows; event identifier uniqueness must be validated.','Channel draft groups conflicting or unmatched campaign mappings under null; review before execution.','Trend draft uses recorded source date; timezone is unverified.']}
+
+@tool(permission=ToolPermission.READ_ONLY)
+def select_existing_engagement_subscription(draft: Dict) -> Dict:
+ """Select only an exact-version succeeded subscription from the grounded live draft; never create access."""
+ d=unwrap(draft)
+ if not d.get('success') or not d.get('subscription_search_succeeded'):
+  raise ValueError('Live subscription search or semantic verification failed; access is unknown.')
+ ids=sorted(x['id'] for x in d.get('subscriptions',[]) if str(x.get('state','')).lower() in ('succeeded','delivered'))
+ if not ids:raise ValueError('No delivered exact-version subscription visible to this connection; reconcile identity/version before requesting new access.')
+ return {'subscription_id':ids[0]}
+
+@tool(permission=ToolPermission.READ_ONLY)
+def authorize_delivered_engagement_query(draft: Dict, delivery: Dict, product: Dict) -> Dict:
+ """Require delivered original assets and exact source descriptors before returning grounded read-only SQL."""
+ d,v,p=map(unwrap,[draft,delivery,product])
+ if not d.get('success') or not v.get('success'):raise ValueError('Cannot verify delivered subscription items.')
+ parts={x['name']:x['asset']['id'] for x in p['data_product_details']['parts_out']}
+ required=['digital_event','campaign']
+ for name in required:
+  items=[x for x in v.get('items',[]) if x.get('asset',{}).get('id')==parts[name]]
+  valid=False
+  for x in items:
+   props=x.get('properties') or {}
+   state=props.get('data_product_delivery_state') or x.get('state')
+   if state not in ('delivered','succeeded'):continue
+   for descriptors in (props.get('output') or {}).values():
+    if not isinstance(descriptors,list):continue
+    fields={r.get('key'):r.get('value') for r in descriptors}
+    if [fields.get(k) for k in ('catalog','schema','table')]==['workspace','performance_marketing_mvp',name]:valid=True
+  if not valid:raise ValueError('Delivered original asset/source mapping is not verified: '+name)
+ query=d['query']
+ if not query.startswith(('SELECT ','WITH ')) or ';' in query:raise ValueError('Invalid read-only query.')
+ return {'query':query}

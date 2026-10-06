@@ -96,7 +96,7 @@ def show_consumer_next_steps(area: str = '', stage: str = 'questions') -> ToolRe
         description=('Choose a question to get a default answer using your existing access, or type your own question.' if stage == 'questions' else 'Select an option and Continue, or keep chatting with your own question.'),
         inputs=[RadioButton(name='choice', title='Next step', required=True, options=choices, option_labels=labels)],
         submit_text='Continue', cancel_text='Keep chatting',
-        on_event=[ToolEvent(tool=('answer_selected_engagement_question' if stage == 'questions' and area.casefold().strip() == 'engagement' else 'select_consumer_next_step'), parameters={'choice': ''}, map_input_to='submit'),
+        on_event=[ToolEvent(tool='select_consumer_next_step', parameters={'choice': ''}, map_input_to='submit'),
                   MessageEvent(message='Continue with my selection.')])
     return ToolResult(content=[TextContent(text=summary, annotations=Annotations(audience=[Role.USER]))], widget=form)
 
@@ -107,7 +107,7 @@ def select_consumer_next_step(choice: str) -> Dict:
         raise ValueError('Unknown discovery choice; use the displayed options or type a new question.')
     is_question = choice in {q for rows in QUESTIONS.values() for q in rows}
     selection = {'success': True, 'selected_next_step': choice, 'intent': 'answer_with_defaults' if is_question else 'understand_or_customize',
-            'read_only_answer_requested': is_question, 'subscription_creation_authorized': False,
+            'sql_authorized': is_question, 'subscription_authorized': False,
             'next_stage': 'questions' if choice in AREAS else 'customizations',
             'instruction': 'If a business question was selected, answer now with explicit defaults and verified existing access; if execution is blocked, provide a clearly labeled unexecuted query and the actual blocker. Do not ask for confirmation or repeat navigation. Offer customizations after the answer.'}
 

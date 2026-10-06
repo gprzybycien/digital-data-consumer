@@ -12,3 +12,14 @@ class DefaultQueryTests(unittest.TestCase):
   r=self.run_draft();self.assertTrue(r['success']);self.assertFalse(r['executed']);self.assertIn('digital_event',r['query']);self.assertNotIn('campaign_events',r['query']);self.assertEqual('order',r['subscriptions'][0]['id']);self.assertEqual('all available records',r['defaults']['period'])
  def test_semantic_failure_and_stale_contract_block_draft(self):
   self.assertFalse(self.run_draft(verified=False)['success']);self.assertFalse(self.run_draft(bad_id=True)['success'])
+
+class DeliveryGuardTests(unittest.TestCase):
+ def test_null_top_level_state_accepts_nested_delivered_original_assets(self):
+  parts=[{'name':n,'asset':{'id':n}} for n in ('campaign','digital_event')]
+  items=[{'asset':{'id':n},'state':None,'properties':{'data_product_delivery_state':'delivered','output':{'route':[{'key':k,'value':v} for k,v in [('catalog','workspace'),('schema','performance_marketing_mvp'),('table',n)]]}}} for n in ('campaign','digital_event')]
+  args=({'success':True,'query':'SELECT 1'},{'success':True,'items':items},{'data_product_details':{'parts_out':parts}})
+  self.assertEqual('SELECT 1',m.authorize_delivered_engagement_query.fn(*args)['query'])
+  items[0]['properties']['data_product_delivery_state']='revoked'
+  with self.assertRaises(ValueError):m.authorize_delivered_engagement_query.fn(*args)
+ def test_failed_search_never_becomes_missing_access(self):
+  with self.assertRaisesRegex(ValueError,'unknown'):m.select_existing_engagement_subscription.fn({'success':True,'subscription_search_succeeded':False})
