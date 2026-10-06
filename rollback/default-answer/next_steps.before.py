@@ -22,7 +22,7 @@ QUESTIONS = {
         'How many distinct converters currently have recorded marketing opt-in?',
         'How does current opt-in among converters vary by campaign?',
         'What does the current opt-in measure mean and what are its limitations?']}
-ACTIONS = ['Change the time period for the selected question', 'Change the grouping or filters for the selected question', 'Show the query and semantic evidence for the selected question']
+ACTIONS = ['Explain the selected question and measures', 'Show semantic verification for the selected question', 'Check readiness for the selected question']
 ALLOWED = set(AREAS + ACTIONS + [q for rows in QUESTIONS.values() for q in rows])
 
 AREA_LABELS = [
@@ -85,37 +85,33 @@ def show_consumer_next_steps(area: str = '', stage: str = 'questions') -> ToolRe
         labels = choices
         summary = AREA_CONTEXT[area.casefold().strip()]
         title = 'Choose a business question'
-    elif stage in ('actions', 'customizations'):
+    elif stage == 'actions':
         choices = ACTIONS
         labels = choices
-        summary = 'You can customize the default answer: change its time period, adjust grouping or filters, or inspect the query and semantic evidence.'
-        title = 'Customize this answer'
+        summary = 'You have selected a business question. We can explain its measures, inspect the semantic evidence, or check readiness to answer it. Any missing period, grouping or time basis should be clarified first.'
+        title = 'Explore your selected question'
     else:
         raise ValueError('Choose a known navigation area and stage areas/questions/actions.')
     form = FormWidget(name='consumer_next_steps', title=title,
-        description=('Choose a question to get a default answer using your existing access, or type your own question.' if stage == 'questions' else 'Select an option and Continue, or keep chatting with your own question.'),
+        description='Select an option and Continue, or keep chatting with your own question.',
         inputs=[RadioButton(name='choice', title='Next step', required=True, options=choices, option_labels=labels)],
         submit_text='Continue', cancel_text='Keep chatting',
         on_event=[ToolEvent(tool='select_consumer_next_step', parameters={'choice': ''}, map_input_to='submit'),
-                  MessageEvent(message='Continue with my selection.')])
+                  MessageEvent(message='Continue from my selected next step returned by select_consumer_next_step. If I selected an area, its explanation and sample-question form have already been returned: wait for my question choice, do not ask for dates or repeat an explanation. If I selected a business question, help refine it, metadata only. Do not calculate results or create a subscription.')])
     return ToolResult(content=[TextContent(text=summary, annotations=Annotations(audience=[Role.USER]))], widget=form)
 
 @tool(permission=ToolPermission.READ_ONLY)
 def select_consumer_next_step(choice: str) -> Dict:
-    """Validate a submitted discovery choice and return it to the conversation. Area selection is discovery. Business-question selection requests a default read-only answer through existing access gates; no subscription creation."""
+    """Validate a submitted discovery choice and return it to the conversation. Selection is metadata-only and does not authorize SQL or subscription creation."""
     if choice not in ALLOWED:
         raise ValueError('Unknown discovery choice; use the displayed options or type a new question.')
-    is_question = choice in {q for rows in QUESTIONS.values() for q in rows}
-    selection = {'success': True, 'selected_next_step': choice, 'intent': 'answer_with_defaults' if is_question else 'understand_or_customize',
-            'sql_authorized': is_question, 'subscription_authorized': False,
-            'next_stage': 'questions' if choice in AREAS else 'customizations',
-            'instruction': 'If a business question was selected, answer now with explicit defaults and verified existing access; if execution is blocked, provide a clearly labeled unexecuted query and the actual blocker. Do not ask for confirmation or repeat navigation. Offer customizations after the answer.'}
+    selection = {'success': True, 'selected_next_step': choice, 'intent': 'understand_or_refine',
+            'sql_authorized': False, 'subscription_authorized': False,
+            'next_stage': 'questions' if choice in AREAS else 'actions',
+            'instruction': 'Advance within the selected area; retain context and resolve only missing period, grouping or time basis. Do not repeat the domain area menu.'}
 
     if choice in AREAS:
         result = show_consumer_next_steps.fn(area=choice, stage='questions').model_dump(mode='json', by_alias=True, exclude_none=True)
         result['structuredContent'] = selection
         return result
-    if is_question:
-        selection['defaults'] = {'period': 'all available records', 'grouping': 'the grouping named in the selected question', 'time_basis': 'recorded source basis; no timezone conversion', 'result_limit': 100}
-        selection['execution_requires'] = ['verified subscription version and delivered items', 'verified semantic and physical mapping', 'authenticated read-only SQL access']
     return selection

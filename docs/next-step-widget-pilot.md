@@ -33,3 +33,27 @@ the form. Area labels describe the analysis rather than naming a topic alone.
 Overview text identifies curated product/glossary scope, relevant measures and
 limitations without claiming live verification. The original pre-pilot rollback
 baseline remains unchanged.
+
+## Default answer on question selection
+
+Selecting a business-question option now requests a read-only default answer through
+existing subscription, semantic, physical-mapping and source-access gates. Area
+selection remains discovery only. No extra explain/readiness/proceed level is
+required. Default period is all available records, grouping follows the question,
+and timestamp handling follows recorded source basis without inventing UTC
+conversion. State defaults with the result. If execution is blocked, provide an
+explicitly unexecuted query only when mappings are verified, plus the actual blocker.
+Offer period/grouping/filter customization after the answer. Monetary and date
+ambiguities that materially affect the result remain legitimate blockers.
+
+The visible form message is now simply “Continue with my selection.” Internal
+routing and authorization details remain in the validated tool result.
+
+Before declaring access absent, reconcile the product VERSION ID (not table IDs),
+exact-version subscriptions without a restrictive state filter, pagination, item
+states, and the connection identity versus the DPH UI identity. Empty results are
+not proof the human user has no subscription. Do not recommend duplicate orders.
+
+A second local checkpoint is rollback/default-answer/, containing the agent and
+tool before this default-answer refinement. The original pre-widget rollback remains
+rollback/next-step-widget/rollback.sh.
