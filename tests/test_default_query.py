@@ -23,3 +23,9 @@ class DeliveryGuardTests(unittest.TestCase):
   with self.assertRaises(ValueError):m.authorize_delivered_engagement_query.fn(*args)
  def test_failed_search_never_becomes_missing_access(self):
   with self.assertRaisesRegex(ValueError,'unknown'):m.select_existing_engagement_subscription.fn({'success':True,'subscription_search_succeeded':False})
+
+class ExecutedAnswerTests(unittest.TestCase):
+ def test_polled_success_is_not_labeled_unexecuted(self):
+  d={'question':'channels','product_version':'1.0.4','defaults':{},'query':'SELECT 1','executed':False,'label':'UNEXECUTED query'}
+  r=m.summarize_executed_engagement_answer.fn(d,{'status':{'state':'SUCCEEDED'},'statement_id':'s','result':{'data_array':[['DISPLAY',1,0]]}},{'subscription_id':'order'})
+  self.assertTrue(r['executed']);self.assertEqual('SUCCEEDED',r['execution_state']);self.assertNotIn('label',r);self.assertIn('result',r)

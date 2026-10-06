@@ -71,3 +71,10 @@ def authorize_delivered_engagement_query(draft: Dict, delivery: Dict, product: D
  query=d['query']
  if not query.startswith(('SELECT ','WITH ')) or ';' in query:raise ValueError('Invalid read-only query.')
  return {'query':query}
+
+@tool(permission=ToolPermission.READ_ONLY)
+def summarize_executed_engagement_answer(draft: Dict, result: Dict, subscription: Dict) -> Dict:
+ """Return compact actual execution evidence; never label an executed query as unexecuted."""
+ d,r,s=map(unwrap,[draft,result,subscription])
+ state=(r.get('status') or {}).get('state','UNKNOWN')
+ return {'question':d['question'],'product_version':d['product_version'],'defaults':d['defaults'],'query':d['query'],'subscription_id':s['subscription_id'],'execution_state':state,'executed':state=='SUCCEEDED','statement_id':r.get('statement_id'),'result':r,'limitations':d.get('limitations',[]),'instruction':'Answer with the actual returned rows when SUCCEEDED. If PENDING or RUNNING, poll the statement_id. Never ask to run a query already submitted. If failed, report the actual SQL error.'}

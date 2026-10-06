@@ -14,14 +14,7 @@ class ContextArgs(BaseModel):
     use_case_id: str
 
 class Response(BaseModel):
-    verification: Dict
-    context: Dict
-    glossary: Dict
-    product: Dict
-    contract: Dict
-    default_answer: Dict
-    delivery: Dict
-    result: Dict
+    answer: Dict
 
 
 class AnyOutput(BaseModel):
@@ -75,6 +68,12 @@ class AccessArgs(BaseModel):
     product: Dict
 class SqlArgs(BaseModel):
     query: str
+class PollArgs(BaseModel):
+    statement_id: str
+class SummaryArgs(BaseModel):
+    draft: Dict
+    result: Dict
+    subscription: Dict
 
 @flow(name='answer_selected_engagement_question', input_schema=Request, output_schema=Response,
       suppress_agent_summarization=False)
@@ -120,11 +119,12 @@ def answer_selected_engagement_question(aflow: Flow) -> Flow:
     access.map_input('product', 'flow.product.output')
     execute = aflow.tool('databrics-sql:execute_sql_read_only', name='execute', input_schema=SqlArgs, output_schema=AnyOutput)
     execute.map_input('query', 'flow.access.output.query')
-    aflow.sequence(START, context, product, contract, glossary, *assets, verify, subscriptions, draft, pick, delivery, access, execute, END)
-    aflow.map_output('delivery', 'flow.delivery.output')
-    aflow.map_output('result', 'flow.execute.output')
-    aflow.map_output('default_answer', 'flow.draft.output')
-    for field in ['verification', 'context', 'glossary', 'product', 'contract']:
-        node = 'verify' if field == 'verification' else 'recipe_context' if field == 'context' else field
-        aflow.map_output(field, 'flow.'+node+'.output')
+    poll = aflow.tool('databrics-sql:poll_sql_result', name='poll', input_schema=PollArgs, output_schema=AnyOutput)
+    poll.map_input('statement_id', 'flow.execute.output.statement_id')
+    summary = aflow.tool('summarize_executed_engagement_answer', name='summary', input_schema=SummaryArgs, output_schema=AnyOutput)
+    summary.map_input('draft', 'flow.draft.output')
+    summary.map_input('result', 'flow.poll.output')
+    summary.map_input('subscription', 'flow.pick_subscription.output')
+    aflow.sequence(START, context, product, contract, glossary, *assets, verify, subscriptions, draft, pick, delivery, access, execute, poll, summary, END)
+    aflow.map_output('answer', 'flow.summary.output')
     return aflow

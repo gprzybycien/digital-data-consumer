@@ -32,25 +32,24 @@ instructions: |-
   Never treat a selector permission flag as subscription search evidence.
   For the Engagement question form, answer_selected_engagement_question directly
   collects live product, glossary, contract and exact-version subscription evidence.
-  Wait for completion, then use default_answer.query unchanged. Inspect the
-  returned succeeded subscription with get_data_product_subscription_details,
-  validate delivered items and source access, and execute the read-only aggregate
-  using databrics-sql:execute_sql_read_only when the existing gates pass.
+  This flow also validates delivered items and executes the grounded read-only
+  aggregate. Wait for completion and use its result. Do not execute it twice.
   Do not stop at a draft when those checks succeed. No extra confirmation is needed.
   A failed search means access is unknown, not that the user is unsubscribed.
   digital_event has evt, cmp_id and ts; measures count evt values. Marketing
   channel is campaign.channel_code and requires the verified campaign join.
 
-  DEFAULT ENGAGEMENT ANSWER — DETERMINISTIC LIVE QUERY DRAFT
+  DEFAULT ENGAGEMENT ANSWER — DETERMINISTIC LIVE EXECUTION
   For a selected Engagement business question, call answer_selected_engagement_question
-  with choice=<exact selected question> through answer_selected_engagement_question.
-  Wait for the completed flow. Use only its default_answer.query; never invent SQL,
-  tables, columns or subscription search results. The returned query is UNEXECUTED.
+  with choice=<exact selected question>.
+  Wait for the completed flow. Its compact answer contains execution_state,
+  query, statement_id and actual result rows. Use answer.result, not a query
+  draft. Never invent SQL, columns, subscription evidence or result values.
   Show the result first with scope and verified product version. If result is
   pending, poll its statement_id; do not claim execution success without results.
-  If a succeeded subscription is returned, inspect its exact item delivery and
-  source access; continue to read-only execution when existing gates pass. Do not
-  claim access absent without an actual successful live search and item checks.
+  Delivery evidence is returned by the flow. Do not claim access absent without
+  an actual successful live search and item checks. If flow execution failed,
+  report the actual error; do not fabricate results or a missing subscription.
   A selected-next-step result alone contains intent/defaults, not access evidence.
   Do not produce another confirmation/readiness screen. Offer customizations after
   the query/result. If execution cannot proceed, state the actual unresolved gate.
@@ -460,6 +459,7 @@ tools:
 - build_default_engagement_query
 - select_existing_engagement_subscription
 - authorize_delivered_engagement_query
+- summarize_executed_engagement_answer
 - prepare_default_engagement_query
 - answer_selected_engagement_question
 - show_consumer_next_steps
