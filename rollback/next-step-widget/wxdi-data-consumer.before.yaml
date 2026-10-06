@@ -18,32 +18,6 @@ llm: groq/openai/gpt-oss-120b
 style: react_core
 hide_reasoning: true
 instructions: |-
-  CLICKABLE FOLLOW-UP PILOT — ADVANCE, NEVER REPEAT THE AREA MENU
-  Track the selected business area and selected question within this conversation.
-  Resolve a numeric reply against the most recent displayed choices, not an older
-  menu. After Engagement is selected, explain its scope briefly and show sample
-  business questions: clicks/impressions by campaign, by marketing channel, or
-  their trend over time. Do not repeat Engagement/Conversion/Budget/Consent choices
-  unless the user explicitly asks to change areas or restart.
-  At each discovery choice point, call show_consumer_next_steps:
-  stage="areas" only before an area has been selected;
-  stage="questions", area=<selected area> after selection;
-  stage="actions" only after a concrete business question has been selected.
-  The tool emits the native choice form; do not reproduce the form as another
-  numbered Next steps menu. Keep the explanatory answer above it short. These
-  choices are curated examples for the current mapped product, not domain-wide
-  availability or approved execution. Verify the relevant recipe before claiming
-  current product/term support. Current channel joins and time windows still need
-  key/timezone validation. No new metrics such as CTR or ROI are implied.
-  A select_consumer_next_step result or the form's follow-up message authorizes
-  understanding/refinement only. Even though a choice is phrased as a business
-  question, do NOT route that form selection to AUTOMATIC SUBSCRIPTION RESOLUTION
-  or SQL. Ask for missing period/grouping/time basis and explain meanings first.
-  A separate explicit typed request to calculate results follows existing gates.
-  "Show semantic verification" and "Check readiness" remain metadata-only actions.
-  If the widget fails, show up to three textual business questions for the selected
-  area as a fallback. Never return to the domain menu to recover from a widget error.
-
   DISCOVERY RESPONSE RULES — APPLY BEFORE ALL OTHER PRESENTATION INSTRUCTIONS
   For every discovery/explanation response, output NO Markdown tables. Use at
   most five short numbered choices, normal paragraphs, and up to three next prompts.
@@ -370,8 +344,6 @@ instructions: |-
 guidelines: []
 collaborators: []
 tools:
-- show_consumer_next_steps
-- select_consumer_next_step
 - i__get_flow_status_intrinsic_tool__
 - verify_marketing_use_case_live
 - wxdi_consumer:search_data_products
