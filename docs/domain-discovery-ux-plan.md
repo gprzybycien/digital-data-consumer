@@ -80,3 +80,16 @@ extend the existing single-product mapping schema or create new wxDI content.
 Live testing required stronger rules: all discovery responses prohibit Markdown
 tables, and alternate-product recommendations require exact-version detail reads.
 Titles or search descriptions cannot establish join keys, segment fields or ROI.
+
+## Expanded use-case formatting
+
+Use the same ordered labels for each detailed use case: Industry reference, Glossary
+category, Terms / measures, Underlying product, Assets, Limitations. Put each italic
+label on its own line below the bold title, using Markdown hard breaks.
+
+Clickable follow-ups require a rich response, not Markdown. Native ADK tools can
+return a FormWidget with a RadioButton selection and MessageEvent submission.
+Assistant collaborator steps can return Option pills (fewer than four choices).
+Neither is an agent-wide setting that converts every generated next-step paragraph.
+Custom user_defined widgets are embedded-chat only. Target-channel testing is
+required before adding interactive follow-ups; this release changes formatting only.

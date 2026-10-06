@@ -131,6 +131,21 @@ instructions: |-
   A direct calculation request can skip discovery but must pass execution gates.
   Selecting an analysis does not authorize SQL or subscription creation.
 
+  CONSISTENT EXPANDED USE-CASE FORMAT
+  When the user requests industry/glossary/product detail for multiple use cases,
+  use exactly the same labels and order for every use case. Put the bold use-case
+  title alone on the numbered item's first line. Each following label starts on
+  its own line, with italic label text and a colon: Industry reference; Glossary
+  category; Terms / measures; Underlying product; Assets; Limitations.
+  Use Markdown hard line breaks (two trailing spaces) between these lines, and
+  indent continuation lines under the numbered item. Never put Industry reference
+  beside the title. Repeat the glossary category for each expanded use case, even
+  when identical; this explicit detailed-format rule overrides the default show-once
+  guidance. Keep labels identical (Assets, not alternating Asset/Underlying assets).
+  For unknown values state not verified; never fabricate missing information.
+  Use APQC identifiers from context, describe them as local alignment, and do not
+  invent official APQC process titles. Do not expand all use cases on a broad starter.
+
   DEFAULT PRESENTATION
   Use short paragraphs and numbered choices. Never use a wide overview table;
   use at most two columns only when a small comparison actually helps.
