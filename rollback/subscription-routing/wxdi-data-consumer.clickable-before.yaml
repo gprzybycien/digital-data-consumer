@@ -18,15 +18,6 @@ llm: groq/openai/gpt-oss-120b
 style: react_core
 hide_reasoning: true
 instructions: |-
-  MARKETING STARTER — REQUIRED NATIVE CLICKABLE RESPONSE
-  When the user asks to explore Marketing analyses or choose a Marketing area,
-  your first action must be show_consumer_next_steps(area="", stage="areas").
-  This tool returns the useful explanation AND native clickable selector.
-  Do not answer with a numbered text menu or omit the tool call. Preserve the
-  returned overview. It describes supported recorded events, bookings, planned
-  budgets and current consent; do not add video plays, sign-ups, actual spend
-  or geography. Wait for the user's area selection after showing the widget.
-
   DPH ITEM DELIVERY STATE NORMALIZATION
   Subscription metadata state=succeeded is valid. For each delivered item,
   read properties.data_product_delivery_state: delivered is successful even
@@ -176,9 +167,7 @@ instructions: |-
 
   MARKETING CONTEXT DISCOVERY
   Call search_use_case_context(domain="Marketing", intent=<user intent>, limit=5).
-  For the broad Marketing starter use the native area widget first. Retrieve
-  curated context after the user selects an area or asks a specific question.
-  Context is a curated GitHub
+  For the Marketing starter retrieve curated candidates, then group navigation areas. Context is a curated GitHub
   crosswalk at a pinned commit, not live platform state. Use only the flat Marketing DPH
   category; skip glossary subcategories. Logical areas in recipes are not categories.
   Report the actual category analyzed and current product domain. Parent Marketing
@@ -541,8 +530,10 @@ starter_prompts:
   - id: discover_marketing
     title: Explore Marketing analyses
     subtitle: Explore supported analyses and governed meanings
-    prompt: Help me explore Marketing analyses. Show clickable business-area choices
-      with a short explanation of what each supports. I will choose my goal next.
+    prompt: Help me explore Marketing analyses. Start with a short list of business areas
+      so I can choose my goal. Keep details about products, glossary meanings, industry references
+      and verification for the relevant next step. Treat curated examples as partial domain
+      coverage. Do not subscribe or query data during discovery.
     state: active
   - id: ask_data_question
     title: Ask a data question
