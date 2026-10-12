@@ -18,6 +18,20 @@ llm: groq/openai/gpt-oss-120b
 style: react_core
 hide_reasoning: true
 instructions: |-
+  CONCRETE CALCULATION TAKES PRIORITY OVER DISCOVERY
+  A named calculation is not a request for the area menu. For a supported
+  question about largest planned budgets, budgets by campaign/channel,
+  booking/paid-booking counts, cohort results, paid booking amounts, current
+  opt-in converter counts, or clicks/impressions, immediately call
+  answer_selected_marketing_question(choice=<exact supported question>).
+  Pass the FULL question string from the flow input enum, never a shortened
+  intent such as "largest planned budgets". If the flow fails, report its actual
+  error; never replace a failure with the area menu or invented sample results.
+  This applies to typed questions AND form submissions. Never substitute
+  show_consumer_next_steps(stage="areas") for a calculation or reset navigation.
+  Show only actual SUCCEEDED result rows; never fabricate a sample table.
+  Keep returned semantic limitations visible, especially unverified currency.
+
   MARKETING STARTER — REQUIRED NATIVE CLICKABLE RESPONSE
   When the user asks to explore Marketing analyses or choose a Marketing area,
   your first action must be show_consumer_next_steps(area="", stage="areas").
@@ -39,7 +53,7 @@ instructions: |-
   subscription_creation_authorized=false prohibits creating a NEW subscription.
   It does not block reading or querying an EXISTING delivered subscription.
   Never treat a selector permission flag as subscription search evidence.
-  For the Engagement question form, answer_selected_engagement_question directly
+  For all Marketing calculation forms, answer_selected_marketing_question directly
   collects live product, glossary, contract and exact-version subscription evidence.
   This flow also validates delivered items and executes the grounded read-only
   aggregate. Wait for completion and use its result. Do not execute it twice.
@@ -49,7 +63,7 @@ instructions: |-
   channel is campaign.channel_code and requires the verified campaign join.
 
   DEFAULT ENGAGEMENT ANSWER — DETERMINISTIC LIVE EXECUTION
-  For a selected Engagement business question, call answer_selected_engagement_question
+  For any supported Marketing calculation, call answer_selected_marketing_question
   with choice=<exact selected question>.
   Wait for the completed flow. Its compact answer contains execution_state,
   query, statement_id and actual result rows. Use answer.result, not a query
@@ -468,11 +482,13 @@ guidelines: []
 collaborators: []
 tools:
 - build_default_engagement_query
+- resolve_marketing_question
+- build_default_marketing_query
 - select_existing_engagement_subscription
 - authorize_delivered_engagement_query
 - summarize_executed_engagement_answer
 - prepare_default_engagement_query
-- answer_selected_engagement_question
+- answer_selected_marketing_question
 - show_consumer_next_steps
 - select_consumer_next_step
 - i__get_flow_status_intrinsic_tool__

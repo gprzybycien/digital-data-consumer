@@ -82,6 +82,9 @@ def show_consumer_next_steps(area: str = '', stage: str = 'questions') -> ToolRe
         title = 'Choose a Marketing area'
     elif stage == 'questions' and area.casefold().strip() in QUESTIONS:
         choices = QUESTIONS[area.casefold().strip()]
+        if area.casefold().strip() == 'customer consent':
+            choices = choices[:2]
+            # Concept explanation remains available as a typed metadata-only request.
         labels = choices
         summary = AREA_CONTEXT[area.casefold().strip()]
         title = 'Choose a business question'
@@ -96,7 +99,7 @@ def show_consumer_next_steps(area: str = '', stage: str = 'questions') -> ToolRe
         description=('Choose a question to get a default answer using your existing access, or type your own question.' if stage == 'questions' else 'Select an option and Continue, or keep chatting with your own question.'),
         inputs=[RadioButton(name='choice', title='Next step', required=True, options=choices, option_labels=labels)],
         submit_text='Continue', cancel_text='Keep chatting',
-        on_event=[ToolEvent(tool=('answer_selected_engagement_question' if stage == 'questions' and area.casefold().strip() == 'engagement' else 'select_consumer_next_step'), parameters={'choice': ''}, map_input_to='submit'),
+        on_event=[ToolEvent(tool=('answer_selected_marketing_question' if stage == 'questions' and area.casefold().strip() in QUESTIONS else 'select_consumer_next_step'), parameters={'choice': ''}, map_input_to='submit'),
                   MessageEvent(message='Continue with my selection.')])
     return ToolResult(content=[TextContent(text=summary, annotations=Annotations(audience=[Role.USER]))], widget=form)
 

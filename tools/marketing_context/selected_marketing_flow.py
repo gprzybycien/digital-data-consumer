@@ -1,0 +1,132 @@
+"""Deterministic wxDI evidence collection: never let chat rewrite query or payloads."""
+import json
+from pathlib import Path
+from typing import Dict, List, Optional, Literal
+from pydantic import BaseModel, ConfigDict
+from ibm_watsonx_orchestrate.flow_builder.flows import Flow, flow, START, END
+
+
+class Request(BaseModel):
+    choice: Literal['What is the planned budget for each campaign?', 'Which campaigns have the largest planned budgets?', 'What are the planned budgets and scheduled dates by marketing channel?', 'How many bookings and paid bookings does each campaign have?', 'How do daily booking counts and paid amounts compare by conversion cohort?', 'How much recorded paid-booking amount is associated with each campaign?', 'How many distinct converters currently have recorded marketing opt-in?', 'How does current opt-in among converters vary by campaign?', 'How many recorded clicks and impressions did each campaign generate?', 'Which marketing channels have the most recorded clicks and impressions?', 'How do recorded clicks and impressions change over time for a campaign?']
+
+
+class ContextArgs(BaseModel):
+    use_case_id: str
+
+class Response(BaseModel):
+    answer: Dict
+
+
+class AnyOutput(BaseModel):
+    model_config = ConfigDict(extra='allow')
+
+
+class ProductArgs(BaseModel):
+    data_product_version_id: str
+
+
+class ContractArgs(ProductArgs):
+    data_product_state: str
+
+
+class GlossaryArgs(BaseModel):
+    auth_scope: str
+    gs_query: str
+
+
+class AssetArgs(BaseModel):
+    asset: str
+    catalog: str
+    project: str = ''
+
+
+class VerifyArgs(BaseModel):
+    use_case_id: str
+    live_product_details: Dict
+    live_glossary_rows: List[Dict]
+    live_asset_details: List[Dict]
+
+
+class SubscriptionArgs(BaseModel):
+    query: str
+    limit: int
+
+class DraftArgs(BaseModel):
+    question: str
+    verification: Dict
+    product: Dict
+    contract: Dict
+    subscriptions: Dict
+
+class PickArgs(BaseModel):
+    draft: Dict
+class DeliveryArgs(BaseModel):
+    subscription_id: str
+class AccessArgs(BaseModel):
+    draft: Dict
+    delivery: Dict
+    product: Dict
+class SqlArgs(BaseModel):
+    query: str
+class PollArgs(BaseModel):
+    statement_id: str
+class SummaryArgs(BaseModel):
+    draft: Dict
+    result: Dict
+    subscription: Dict
+
+@flow(name='answer_selected_marketing_question', input_schema=Request, output_schema=Response,
+      suppress_agent_summarization=False)
+def answer_selected_marketing_question(aflow: Flow) -> Flow:
+    """Answer a selected Marketing calculation using live semantics, an existing delivered subscription and authenticated read-only SQL. Pass choice as the exact question. Never creates subscriptions."""
+    mapping = json.loads((Path(__file__).resolve().parents[2]/'context/marketing/mapping.json').read_text())
+    resolve = aflow.tool('resolve_marketing_question', name='resolve', input_schema=Request, output_schema=AnyOutput)
+    resolve.map_input('choice', 'flow.input.choice')
+    context = aflow.tool('read_use_case_context', name='recipe_context', input_schema=ContextArgs, output_schema=AnyOutput)
+    context.map_input('use_case_id', 'flow.resolve.output.use_case_id')
+    product = aflow.tool('wxdi_consumer:get_data_product_details', name='product', input_schema=ProductArgs, output_schema=AnyOutput)
+    product.map_input('data_product_version_id', 'flow.recipe_context.output.product.version_id')
+    contract = aflow.tool('wxdi_consumer:get_data_product_contract', name='contract', input_schema=ContractArgs, output_schema=AnyOutput)
+    contract.map_input('data_product_version_id', 'flow.recipe_context.output.product.version_id')
+    contract.map_input('data_product_state', repr('available'))
+    glossary = aflow.tool('wxdi_consumer:run_gs_query', name='glossary', input_schema=GlossaryArgs, output_schema=AnyOutput)
+    glossary.map_input('auth_scope', 'flow.recipe_context.output.live_glossary_query_arguments.auth_scope')
+    glossary.map_input('gs_query', 'flow.recipe_context.output.live_glossary_query_arguments.gs_query')
+    assets = []
+    for item in mapping['assignment_workaround']['assets']:
+        node = aflow.tool('wxdi_consumer:get_asset_details', name='asset_'+item['name'], input_schema=AssetArgs, output_schema=AnyOutput)
+        node.map_input('asset', repr(item['id']))
+        node.map_input('catalog', repr(mapping['product']['catalog_id']))
+        node.map_input('project', repr(''))
+        assets.append(node)
+    verify = aflow.tool('verify_use_case_context', name='verify', input_schema=VerifyArgs, output_schema=AnyOutput)
+    verify.map_input('use_case_id', 'flow.resolve.output.use_case_id')
+    verify.map_input('live_product_details', 'flow.product.output')
+    verify.map_input('live_glossary_rows', 'flow.glossary.output.rows')
+    verify.map_input('live_asset_details', '['+', '.join('flow.asset_'+a['name']+'.output' for a in mapping['assignment_workaround']['assets'])+']')
+    subscriptions = aflow.tool('wxdi_consumer:search_data_product_subscriptions', name='subscriptions', input_schema=SubscriptionArgs, output_schema=AnyOutput)
+    subscriptions.map_input('query', repr('asset.id=="'+mapping['product']['version_id']+'"'))
+    subscriptions.map_input('limit', '200')
+    draft = aflow.tool('build_default_marketing_query', name='draft', input_schema=DraftArgs, output_schema=AnyOutput)
+    draft.map_input('question', 'flow.input.choice')
+    for key, node in [('verification','verify'),('product','product'),('contract','contract'),('subscriptions','subscriptions')]:
+        draft.map_input(key, 'flow.'+node+'.output')
+    pick = aflow.tool('select_existing_engagement_subscription', name='pick_subscription', input_schema=PickArgs, output_schema=AnyOutput)
+    pick.map_input('draft', 'flow.draft.output')
+    delivery = aflow.tool('wxdi_consumer:get_data_product_subscription_details', name='delivery', input_schema=DeliveryArgs, output_schema=AnyOutput)
+    delivery.map_input('subscription_id', 'flow.pick_subscription.output.subscription_id')
+    access = aflow.tool('authorize_delivered_engagement_query', name='access', input_schema=AccessArgs, output_schema=AnyOutput)
+    access.map_input('draft', 'flow.draft.output')
+    access.map_input('delivery', 'flow.delivery.output')
+    access.map_input('product', 'flow.product.output')
+    execute = aflow.tool('databrics-sql:execute_sql_read_only', name='execute', input_schema=SqlArgs, output_schema=AnyOutput)
+    execute.map_input('query', 'flow.access.output.query')
+    poll = aflow.tool('databrics-sql:poll_sql_result', name='poll', input_schema=PollArgs, output_schema=AnyOutput)
+    poll.map_input('statement_id', 'flow.execute.output.statement_id')
+    summary = aflow.tool('summarize_executed_engagement_answer', name='summary', input_schema=SummaryArgs, output_schema=AnyOutput)
+    summary.map_input('draft', 'flow.draft.output')
+    summary.map_input('result', 'flow.poll.output')
+    summary.map_input('subscription', 'flow.pick_subscription.output')
+    aflow.sequence(START, resolve, context, product, contract, glossary, *assets, verify, subscriptions, draft, pick, delivery, access, execute, poll, summary, END)
+    aflow.map_output('answer', 'flow.summary.output')
+    return aflow

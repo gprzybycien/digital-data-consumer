@@ -29,3 +29,30 @@ class ExecutedAnswerTests(unittest.TestCase):
   d={'question':'channels','product_version':'1.0.4','defaults':{},'query':'SELECT 1','executed':False,'label':'UNEXECUTED query'}
   r=m.summarize_executed_engagement_answer.fn(d,{'status':{'state':'SUCCEEDED'},'statement_id':'s','result':{'data_array':[['DISPLAY',1,0]]}},{'subscription_id':'order'})
   self.assertTrue(r['executed']);self.assertEqual('SUCCEEDED',r['execution_state']);self.assertNotIn('label',r);self.assertIn('result',r)
+
+class AllAreaQueryTests(unittest.TestCase):
+ def setUp(self):
+  import csv,duckdb
+  self.db=duckdb.connect();self.db.execute("ATTACH ':memory:' AS workspace");self.db.execute('CREATE SCHEMA workspace.performance_marketing_mvp')
+  self.parts=[];self.schema=[]
+  for path in (ROOT/'exports/databricks').glob('*.csv'):
+   n=path.stem
+   with path.open() as f:cols=next(csv.reader(f))
+   self.parts.append({'name':n,'asset':{'id':n}});self.schema.append({'name':n,'asset_id':n,'physical_name':'/workspace/performance_marketing_mvp/'+n,'properties':[{'name':c} for c in cols]})
+   self.db.execute(f"CREATE TABLE workspace.performance_marketing_mvp.{n} AS SELECT * FROM read_csv_auto(?)",[str(path)])
+ def tearDown(self):self.db.close()
+ def draft(self,q):
+  return m.build_default_marketing_query.fn(q,{'discovery_verified':True},{'success':True,'data_product_details':{'id':'version@catalog','version':'1.0.4','parts_out':self.parts}},{'success':True,'data_contract':repr({'schema':self.schema})},{'success':True,'subscriptions':[{'id':'order','asset':{'id':'version'},'state':'succeeded'}]})
+ def test_every_calculation_runs_on_recorded_asset_schema(self):
+  for q in m.QUESTION_RECIPES:
+   with self.subTest(question=q):
+    d=self.draft(q);rows=self.db.execute(d['query']).fetchall();self.assertTrue(rows);self.assertIn('LIMIT 100',d['query']);self.assertTrue(d['required_assets'])
+ def test_budget_ranking_and_booking_counts_match_fixture(self):
+  q='Which campaigns have the largest planned budgets?';rows=self.db.execute(self.draft(q)['query']).fetchall()
+  self.assertEqual(sorted([r[3] for r in rows],reverse=True),[r[3] for r in rows]);self.assertTrue(self.draft(q)['limitations'])
+  rows=self.db.execute(self.draft('How many bookings and paid bookings does each campaign have?')['query']).fetchall();self.assertEqual(3,sum(r[1] for r in rows));self.assertEqual(2,sum(r[2] for r in rows))
+ def test_stale_budget_binding_blocks_execution(self):
+  next(a for a in self.schema if a['name']=='campaign')['asset_id']='stale'
+  with self.assertRaises(ValueError):self.draft('Which campaigns have the largest planned budgets?')
+ def test_explanation_never_resolves_to_a_query(self):
+  with self.assertRaises(ValueError):m.resolve_marketing_question.fn('What does the current opt-in measure mean and what are its limitations?')
