@@ -1,0 +1,118 @@
+# Partial ODCS requirements draft; not validated for DPH import.
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "b70ff3d7-5ad7-4d74-a269-3baa4471963e",
+  "name": "Data need: Can the consumer agent save an unbound requirements draft and return a verified link?",
+  "version": "0.1.0",
+  "status": "draft",
+  "description": {
+    "purpose": "Integration verification of reviewed brief delivery through the managed GitHub connection.",
+    "usage": "Can the consumer agent save an unbound requirements draft and return a verified link?",
+    "limitations": "Partial consumer requirements draft. Source discovery and physical bindings are pending. Service expectations are requests, not producer commitments."
+  },
+  "schema": [],
+  "customProperties": [
+    {
+      "property": "consumerRequest",
+      "value": {
+        "stage": "business_requirements",
+        "sourceDiscovery": "not_performed",
+        "bindingStatus": "unbound",
+        "useCase": {
+          "business_goal": "Integration verification of reviewed brief delivery through the managed GitHub connection.",
+          "business_question": "Can the consumer agent save an unbound requirements draft and return a verified link?",
+          "implementation_preference": "graph",
+          "requirements": "Sample entity connection: Simulated business relationship; exact meaning left open for this integration test. [essential]\nDetail: Simulated entity connections; no physical graph or hop limit selected.",
+          "service_expectations": "No freshness or history commitments; integration verification only.",
+          "acceptance_criteria": "File bytes match the exporter output; open meanings remain visible; no sources queried."
+        },
+        "guidedContext": {
+          "business_need": "Integration test for saving a reviewed relationship-exploration brief.",
+          "selections": {
+            "delivery": [
+              {
+                "id": "graph",
+                "name": "Connected entities and relationships — explore how customers, products or other things connect",
+                "definition": "Connected entities and relationships — explore how customers, products or other things connect",
+                "context": "Expressed in the consumer’s answer",
+                "user_confirmation": "Selected the displayed definition and context in the delivery form."
+              }
+            ]
+          },
+          "notes": {
+            "delivery": {
+              "adjustment": "",
+              "undecided": false
+            }
+          },
+          "request_id": "b70ff3d7-5ad7-4d74-a269-3baa4471963e",
+          "information_requirements": [
+            {
+              "id": "sample_connection",
+              "name": "Sample entity connection",
+              "purpose": "Exercise the reviewed information handoff",
+              "definition": "Simulated business relationship; exact meaning left open for this integration test.",
+              "kind": "relationship",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Selected for this explicitly labelled integration verification."
+            }
+          ],
+          "information_shape": {
+            "detail": "Simulated entity connections; no physical graph or hop limit selected.",
+            "timing": "No freshness or history commitments; integration verification only.",
+            "original_need": "Integration test for saving a reviewed relationship-exploration brief.",
+            "status": "consumer_confirmed_with_open_questions"
+          },
+          "review": {
+            "business_goal": "Integration verification of reviewed brief delivery through the managed GitHub connection.",
+            "business_question": "Can the consumer agent save an unbound requirements draft and return a verified link?",
+            "acceptance_criteria": "File bytes match the exporter output; open meanings remain visible; no sources queried.",
+            "user_confirmation": "Submitted the final review to save this brief to GitHub."
+          }
+        },
+        "governedReferences": [],
+        "informationRequirements": [
+          {
+            "id": "sample_connection",
+            "name": "Sample entity connection",
+            "purpose": "Exercise the reviewed information handoff",
+            "definition": "Simulated business relationship; exact meaning left open for this integration test.",
+            "kind": "relationship",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Selected for this explicitly labelled integration verification."
+          }
+        ],
+        "informationShape": {
+          "detail": "Simulated entity connections; no physical graph or hop limit selected.",
+          "timing": "No freshness or history commitments; integration verification only.",
+          "original_need": "Integration test for saving a reviewed relationship-exploration brief.",
+          "status": "consumer_confirmed_with_open_questions"
+        },
+        "openQuestions": [
+          "No Knowledge Accelerator categories or business terms have been confirmed.",
+          "Business meaning needs agreement for: Sample entity connection"
+        ],
+        "engineerHandoff": {
+          "nextAction": "discover_sources_and_propose_bindings",
+          "preserveConfirmedMeanings": true,
+          "requiredEvidence": [
+            "Requirement-to-source mappings",
+            "Type-specific implementation and semantic validation",
+            "Coverage and freshness assessment",
+            "Unmet requirements and proposed changes",
+            "Coverage review per requested item: available, derived, missing or ambiguous; proposed binding, evidence and any consequential difference for consumer review"
+          ]
+        }
+      }
+    }
+  ]
+}
