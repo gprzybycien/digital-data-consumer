@@ -1,0 +1,335 @@
+# Partial ODCS requirements draft; not validated for DPH import.
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "7329b0af-caca-4339-84c8-b8a21d7ca6f3",
+  "name": "Data need: choose which existing customers to invite first to Voyager Plus, an annual travel membership launchi",
+  "version": "0.1.0",
+  "status": "draft",
+  "description": {
+    "purpose": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+    "usage": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+    "limitations": "Partial consumer requirements draft. Source discovery and physical bindings are pending. Service expectations are requests, not producer commitments."
+  },
+  "schema": [],
+  "customProperties": [
+    {
+      "property": "consumerRequest",
+      "value": {
+        "stage": "business_requirements",
+        "sourceDiscovery": "not_performed",
+        "bindingStatus": "unbound",
+        "useCase": {
+          "business_goal": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+          "business_question": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+          "implementation_preference": "structured",
+          "requirements": "Invitation priority list: Rank customers by likelihood to purchase the Voyager Plus annual travel membership [essential]; Eligible customer base: Existing travel-booking customers in the EU who have opted in to marketing email [essential]; Propensity to buy membership: Analytic score estimating probability of buying Voyager Plus [essential]; Recent booking activity: Business details, including representation and time windows, remain to be agreed. [essential]\nDetail: One row per eligible customer, ranked by likelihood to buy.",
+          "service_expectations": "Booking history: last 24 months. Prediction window: purchase within 30 days of invitation. First list 2 weeks before launch, then weekly for 8 weeks.",
+          "acceptance_criteria": ""
+        },
+        "guidedContext": {
+          "request_id": "7329b0af-caca-4339-84c8-b8a21d7ca6f3",
+          "business_need": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+          "selections": {
+            "concepts": [
+              {
+                "id": "f95259e1-bcb6-43cb-9e86-dd467600ca11",
+                "name": "Customer",
+                "definition": "A person who is able to avail of the contact center services.",
+                "context": "Knowledge Accelerator for Cross Industry / Business Core Vocabulary / Customer",
+                "category_path": "Knowledge Accelerator for Cross Industry / Business Core Vocabulary / Customer",
+                "artifact_type": "glossary_term",
+                "version": "f400c111-9099-461e-871e-c2f291ac963b_12",
+                "source_url": "https://dataplatform.cloud.ibm.com/governance/terms/f95259e1-bcb6-43cb-9e86-dd467600ca11/f400c111-9099-461e-871e-c2f291ac963b_12?context=df",
+                "api_source_url": "https://api.dataplatform.cloud.ibm.com/v3/glossary_terms/f95259e1-bcb6-43cb-9e86-dd467600ca11/versions/f400c111-9099-461e-871e-c2f291ac963b_12",
+                "retrieved_at": "2026-10-23T16:04:38.713884+00:00",
+                "ai_generated": false,
+                "accelerator": "Knowledge Accelerator for Cross Industry",
+                "user_confirmation": "Confirmed relevance from the displayed glossary preview and industry context; exact definition and attribution retained."
+              }
+            ],
+            "scopes": [
+              {
+                "id": "1a8525b2-0832-49a8-ac4c-77afe7b1f3f2",
+                "name": "Personal Data",
+                "definition": "A Business Scope that groups terms for Personal Data addressing personal, identifying, sensitive, and related information of individuals. The classifications include Personal Information (PI), and Sensitive Personal Information (SPI). This set of terms is not intended to be a definitive standard for data privacy and protection requirements, as the classifications of PI and SPI, and the processing of such information can vary in different legal jurisdictions. The scope is designed as a template to accelerate governance of data privacy information and the activities that are related to processing such information.",
+                "context": "Knowledge Accelerator for Cross Industry / Business Scopes / Data Privacy / Personal Data",
+                "category_path": "Knowledge Accelerator for Cross Industry / Business Scopes / Data Privacy / Personal Data",
+                "artifact_type": "category",
+                "version": "9f440010-a770-45cf-a707-8925bf4ef8d9_9",
+                "source_url": "https://dataplatform.cloud.ibm.com/governance/categories/1a8525b2-0832-49a8-ac4c-77afe7b1f3f2?context=df",
+                "api_source_url": "https://api.dataplatform.cloud.ibm.com/v3/categories/1a8525b2-0832-49a8-ac4c-77afe7b1f3f2",
+                "retrieved_at": "2026-10-23T16:09:40.405829+00:00",
+                "ai_generated": false,
+                "accelerator": "Knowledge Accelerator for Cross Industry",
+                "user_confirmation": "Selected relevance from the displayed glossary meaning and industry context."
+              }
+            ],
+            "delivery": [
+              {
+                "id": "structured",
+                "name": "Reports and calculations — compare numbers in tables, such as sales by month",
+                "definition": "Reports and calculations — compare numbers in tables, such as sales by month",
+                "context": "Expressed in the consumer’s answer",
+                "user_confirmation": "Selected the displayed definition and context in the delivery form."
+              }
+            ]
+          },
+          "notes": {
+            "concepts": {
+              "adjustment": "The key meaning is likelihood to buy the membership: Propensity To Buy Product (Cross Industry).",
+              "undecided": true
+            },
+            "scope_lookup": {
+              "undecided": true,
+              "adjustment": "Additional linked business contexts remain available beyond this first set."
+            },
+            "scopes": {
+              "undecided": false,
+              "adjustment": ""
+            },
+            "delivery": {
+              "adjustment": "",
+              "undecided": false
+            },
+            "proposal_details": {
+              "undecided": true,
+              "adjustment": "Recent booking activity: unconfirmed numeric assertion removed; details remain open."
+            },
+            "information_requirements": {
+              "undecided": false,
+              "adjustment": ""
+            },
+            "information_shape": {
+              "undecided": false,
+              "adjustment": ""
+            }
+          },
+          "business_goal": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+          "business_question": "",
+          "industry_options": [
+            {
+              "id": "0d3793b0-5b17-4f04-bd5f-b7d4d8d487c4",
+              "name": "Knowledge Accelerator Sample Personal Data"
+            },
+            {
+              "id": "7b443c89-5306-4069-90b4-af58479d800e",
+              "name": "Knowledge Accelerator for Cross Industry"
+            },
+            {
+              "id": "9c51cc06-4366-4451-bba8-888364d873ad",
+              "name": "Knowledge Accelerator for Energy and Utilities"
+            },
+            {
+              "id": "d2305961-1902-4394-8aba-94e1cf730a45",
+              "name": "Knowledge Accelerator for Financial Services"
+            },
+            {
+              "id": "7b7a6457-2630-482f-8b49-e46d632b012d",
+              "name": "Knowledge Accelerator for Healthcare"
+            },
+            {
+              "id": "2a1d19ed-9940-4955-9630-920c60e4ffc9",
+              "name": "Knowledge Accelerator for Insurance"
+            },
+            {
+              "id": "868acb88-7697-420d-b2f9-42f46f2bd739",
+              "name": "Knowledge Accelerators"
+            }
+          ],
+          "industry_lookup_error": null,
+          "business_context": "Voyager Plus annual travel membership (€79/year) for existing travel-booking customers in the EU who opted in to marketing email. Marketing reviews a ranked shortlist of the best 50,000 before sending invitations.",
+          "analysis_approach": "unsure",
+          "industry": {
+            "accelerator_id": "7b443c89-5306-4069-90b4-af58479d800e",
+            "accelerator_name": "Knowledge Accelerator for Cross Industry"
+          },
+          "information_requirements": [
+            {
+              "id": "outcome",
+              "name": "Invitation priority list",
+              "purpose": "Identify top customers to invite for Voyager Plus membership",
+              "definition": "Rank customers by likelihood to purchase the Voyager Plus annual travel membership",
+              "kind": "measure",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "population",
+              "name": "Eligible customer base",
+              "purpose": "Define the set of customers eligible for invitation",
+              "definition": "Existing travel-booking customers in the EU who have opted in to marketing email",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "propensity_score",
+              "name": "Propensity to buy membership",
+              "purpose": "Score each customer on likelihood to purchase the membership",
+              "definition": "Analytic score estimating probability of buying Voyager Plus",
+              "kind": "measure",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "booking_history",
+              "name": "Recent booking activity",
+              "purpose": "Provide recent travel activity for scoring",
+              "definition": "Business details, including representation and time windows, remain to be agreed.",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            }
+          ],
+          "excluded_information": [],
+          "information_shape": {
+            "detail": "One row per eligible customer, ranked by likelihood to buy.",
+            "timing": "Booking history: last 24 months. Prediction window: purchase within 30 days of invitation. First list 2 weeks before launch, then weekly for 8 weeks.",
+            "original_need": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+            "clarified_goal": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+            "status": "consumer_confirmed"
+          },
+          "review": {
+            "business_goal": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+            "business_question": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+            "acceptance_criteria": "",
+            "user_confirmation": "Submitted the final review to save this brief to GitHub."
+          }
+        },
+        "governedReferences": [
+          {
+            "accelerator": "Knowledge Accelerator for Cross Industry",
+            "retrieved_at": "2026-10-23T16:04:38.713884+00:00",
+            "id": "f95259e1-bcb6-43cb-9e86-dd467600ca11",
+            "name": "Customer",
+            "category_path": "Knowledge Accelerator for Cross Industry / Business Core Vocabulary / Customer",
+            "definition": "A person who is able to avail of the contact center services.",
+            "user_confirmation": "Confirmed relevance from the displayed glossary preview and industry context; exact definition and attribution retained.",
+            "source_url": "https://dataplatform.cloud.ibm.com/governance/terms/f95259e1-bcb6-43cb-9e86-dd467600ca11/f400c111-9099-461e-871e-c2f291ac963b_12?context=df",
+            "version": "f400c111-9099-461e-871e-c2f291ac963b_12",
+            "artifact_type": "glossary_term"
+          },
+          {
+            "accelerator": "Knowledge Accelerator for Cross Industry",
+            "retrieved_at": "2026-10-23T16:09:40.405829+00:00",
+            "id": "1a8525b2-0832-49a8-ac4c-77afe7b1f3f2",
+            "name": "Personal Data",
+            "category_path": "Knowledge Accelerator for Cross Industry / Business Scopes / Data Privacy / Personal Data",
+            "definition": "A Business Scope that groups terms for Personal Data addressing personal, identifying, sensitive, and related information of individuals. The classifications include Personal Information (PI), and Sensitive Personal Information (SPI). This set of terms is not intended to be a definitive standard for data privacy and protection requirements, as the classifications of PI and SPI, and the processing of such information can vary in different legal jurisdictions. The scope is designed as a template to accelerate governance of data privacy information and the activities that are related to processing such information.",
+            "user_confirmation": "Selected relevance from the displayed glossary meaning and industry context.",
+            "source_url": "https://dataplatform.cloud.ibm.com/governance/categories/1a8525b2-0832-49a8-ac4c-77afe7b1f3f2?context=df",
+            "version": "9f440010-a770-45cf-a707-8925bf4ef8d9_9",
+            "artifact_type": "category"
+          }
+        ],
+        "informationRequirements": [
+          {
+            "id": "outcome",
+            "name": "Invitation priority list",
+            "purpose": "Identify top customers to invite for Voyager Plus membership",
+            "definition": "Rank customers by likelihood to purchase the Voyager Plus annual travel membership",
+            "kind": "measure",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "population",
+            "name": "Eligible customer base",
+            "purpose": "Define the set of customers eligible for invitation",
+            "definition": "Existing travel-booking customers in the EU who have opted in to marketing email",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "propensity_score",
+            "name": "Propensity to buy membership",
+            "purpose": "Score each customer on likelihood to purchase the membership",
+            "definition": "Analytic score estimating probability of buying Voyager Plus",
+            "kind": "measure",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "booking_history",
+            "name": "Recent booking activity",
+            "purpose": "Provide recent travel activity for scoring",
+            "definition": "Business details, including representation and time windows, remain to be agreed.",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          }
+        ],
+        "informationShape": {
+          "detail": "One row per eligible customer, ranked by likelihood to buy.",
+          "timing": "Booking history: last 24 months. Prediction window: purchase within 30 days of invitation. First list 2 weeks before launch, then weekly for 8 weeks.",
+          "original_need": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+          "clarified_goal": "choose which existing customers to invite first to Voyager Plus, an annual travel membership launching in March.",
+          "status": "consumer_confirmed"
+        },
+        "openQuestions": [
+          "concepts selection needs review: The key meaning is likelihood to buy the membership: Propensity To Buy Product (Cross Industry).",
+          "scope_lookup selection needs review: Additional linked business contexts remain available beyond this first set.",
+          "proposal_details selection needs review: Recent booking activity: unconfirmed numeric assertion removed; details remain open.",
+          "Acceptance criteria remain to be agreed.",
+          "Business meaning needs agreement for: Invitation priority list",
+          "Business meaning needs agreement for: Eligible customer base",
+          "Business meaning needs agreement for: Propensity to buy membership",
+          "Business meaning needs agreement for: Recent booking activity"
+        ],
+        "engineerHandoff": {
+          "nextAction": "discover_sources_and_propose_bindings",
+          "preserveConfirmedMeanings": true,
+          "requiredEvidence": [
+            "Requirement-to-source mappings",
+            "Type-specific implementation and semantic validation",
+            "Coverage and freshness assessment",
+            "Unmet requirements and proposed changes",
+            "Coverage review per requested item: available, derived, missing or ambiguous; proposed binding, evidence and any consequential difference for consumer review"
+          ]
+        }
+      }
+    }
+  ]
+}
