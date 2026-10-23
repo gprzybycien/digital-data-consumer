@@ -1,0 +1,360 @@
+# Partial ODCS requirements draft; not validated for DPH import.
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "17e8e315-7b20-457d-adf9-06dc52d76d6e",
+  "name": "Data need: Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+  "version": "0.1.0",
+  "status": "draft",
+  "description": {
+    "purpose": "I want to segment existing booking customers for an annual travel membership launch.",
+    "usage": "Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+    "limitations": "Partial consumer requirements draft. Source discovery and physical bindings are pending. Service expectations are requests, not producer commitments."
+  },
+  "schema": [],
+  "customProperties": [
+    {
+      "property": "consumerRequest",
+      "value": {
+        "stage": "business_requirements",
+        "sourceDiscovery": "not_performed",
+        "bindingStatus": "unbound",
+        "useCase": {
+          "business_goal": "I want to segment existing booking customers for an annual travel membership launch.",
+          "business_question": "Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+          "implementation_preference": "structured",
+          "requirements": "Propensity to Buy Score: Score based on past bookings, travel frequency, spend, and demographic factors [essential]; Customer Eligibility Flag: Boolean flag based on active membership, no existing travel membership, and recent activity [essential]; Recent Booking Count: Business details, including representation and time windows, remain to be agreed. [optional]; Average Spend per Booking: Business details, including representation and time windows, remain to be agreed. [undecided]; Customer Demographics: Attributes such as age group, country, and loyalty program tier [undecided]; Invitation Date: Date when the marketing invitation is sent [undecided]; Membership Purchase Indicator: Boolean flag indicating conversion within the 30‑day window [undecided]\nDetail: One result per eligible customer for this membership offer, including customer ID and score value",
+          "service_expectations": "Use activity from the preceding 12 months; target horizon is purchase within 30 days of invitation. Weekly refresh.",
+          "acceptance_criteria": ""
+        },
+        "guidedContext": {
+          "request_id": "17e8e315-7b20-457d-adf9-06dc52d76d6e",
+          "business_need": "something for marketing",
+          "selections": {
+            "concepts": [
+              {
+                "id": "dd7a9a97-0836-4af6-802e-b36ac22d1e63",
+                "name": "Propensity To Buy",
+                "definition": "The likelihood that a customer will buy when a proposition is made.",
+                "context": "Knowledge Accelerator for Healthcare / Business Core Vocabulary / Agreement",
+                "category_path": "Knowledge Accelerator for Healthcare / Business Core Vocabulary / Agreement",
+                "artifact_type": "glossary_term",
+                "version": "6b142c0d-66ee-481e-a5c3-9cef8e3a4169_2",
+                "source_url": "https://dataplatform.cloud.ibm.com/governance/terms/dd7a9a97-0836-4af6-802e-b36ac22d1e63/6b142c0d-66ee-481e-a5c3-9cef8e3a4169_2?context=df",
+                "api_source_url": "https://api.dataplatform.cloud.ibm.com/v3/glossary_terms/dd7a9a97-0836-4af6-802e-b36ac22d1e63/versions/6b142c0d-66ee-481e-a5c3-9cef8e3a4169_2",
+                "retrieved_at": "2026-10-23T07:06:00.075638+00:00",
+                "ai_generated": false,
+                "accelerator": "Knowledge Accelerator for Healthcare",
+                "user_confirmation": "Confirmed relevance from the displayed glossary preview and industry context; exact definition and attribution retained."
+              }
+            ],
+            "scopes": [],
+            "delivery": [
+              {
+                "id": "structured",
+                "name": "Reports and calculations — compare numbers in tables, such as sales by month",
+                "definition": "Reports and calculations — compare numbers in tables, such as sales by month",
+                "context": "Expressed in the consumer’s answer",
+                "user_confirmation": "Selected the displayed definition and context in the delivery form."
+              }
+            ]
+          },
+          "notes": {
+            "concept_lookup": {
+              "undecided": true,
+              "adjustment": "Probability of purchase: no verifiable candidates returned by this search; absence is not established"
+            },
+            "concepts": {
+              "adjustment": "",
+              "undecided": false
+            },
+            "scopes": {
+              "undecided": true,
+              "adjustment": ""
+            },
+            "delivery": {
+              "adjustment": "",
+              "undecided": false
+            },
+            "proposal_details": {
+              "undecided": true,
+              "adjustment": "Recent Booking Count: unconfirmed numeric assertion removed; details remain open. Average Spend per Booking: unconfirmed numeric assertion removed; details remain open."
+            },
+            "information_requirements": {
+              "undecided": true,
+              "adjustment": ""
+            },
+            "information_shape": {
+              "undecided": false,
+              "adjustment": ""
+            }
+          },
+          "business_goal": "I want to segment existing booking customers for an annual travel membership launch.",
+          "business_question": "Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+          "business_context": "The offering is an annual travel membership for existing booking customers. The marketing team will review a shortlist before invitations. I do not know whether a suitable score exists; help me decide.",
+          "analysis_approach": "unsure",
+          "information_requirements": [
+            {
+              "id": "1",
+              "name": "Propensity to Buy Score",
+              "purpose": "Predict likelihood of membership purchase within 30 days",
+              "definition": "Score based on past bookings, travel frequency, spend, and demographic factors",
+              "kind": "measure",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "2",
+              "name": "Customer Eligibility Flag",
+              "purpose": "Identify customers who meet eligibility criteria for invitation",
+              "definition": "Boolean flag based on active membership, no existing travel membership, and recent activity",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "3",
+              "name": "Recent Booking Count",
+              "purpose": "Measure recent engagement to prioritize invitations",
+              "definition": "Business details, including representation and time windows, remain to be agreed.",
+              "kind": "measure",
+              "glossary_reference_ids": [],
+              "priority": "optional",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose optional for this proposed item."
+            },
+            {
+              "id": "4",
+              "name": "Average Spend per Booking",
+              "purpose": "Assess customer value for targeting",
+              "definition": "Business details, including representation and time windows, remain to be agreed.",
+              "kind": "measure",
+              "glossary_reference_ids": [],
+              "priority": "undecided",
+              "priority_status": "unresolved",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Priority not yet confirmed."
+            },
+            {
+              "id": "5",
+              "name": "Customer Demographics",
+              "purpose": "Segment by age, location, and loyalty tier",
+              "definition": "Attributes such as age group, country, and loyalty program tier",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "undecided",
+              "priority_status": "unresolved",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Priority not yet confirmed."
+            },
+            {
+              "id": "6",
+              "name": "Invitation Date",
+              "purpose": "Reference point for the 30‑day conversion window",
+              "definition": "Date when the marketing invitation is sent",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "undecided",
+              "priority_status": "unresolved",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Priority not yet confirmed."
+            },
+            {
+              "id": "7",
+              "name": "Membership Purchase Indicator",
+              "purpose": "Flag customers who buy the membership within 30 days",
+              "definition": "Boolean flag indicating conversion within the 30‑day window",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "undecided",
+              "priority_status": "unresolved",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Priority not yet confirmed."
+            }
+          ],
+          "excluded_information": [],
+          "information_shape": {
+            "detail": "One result per eligible customer for this membership offer, including customer ID and score value",
+            "timing": "Use activity from the preceding 12 months; target horizon is purchase within 30 days of invitation. Weekly refresh.",
+            "original_need": "something for marketing",
+            "clarified_goal": "I want to segment existing booking customers for an annual travel membership launch.",
+            "status": "consumer_confirmed"
+          },
+          "review": {
+            "business_goal": "I want to segment existing booking customers for an annual travel membership launch.",
+            "business_question": "Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+            "acceptance_criteria": "",
+            "user_confirmation": "Submitted the final review to save this brief to GitHub."
+          }
+        },
+        "governedReferences": [
+          {
+            "definition": "The likelihood that a customer will buy when a proposition is made.",
+            "name": "Propensity To Buy",
+            "category_path": "Knowledge Accelerator for Healthcare / Business Core Vocabulary / Agreement",
+            "retrieved_at": "2026-10-23T07:06:00.075638+00:00",
+            "artifact_type": "glossary_term",
+            "source_url": "https://dataplatform.cloud.ibm.com/governance/terms/dd7a9a97-0836-4af6-802e-b36ac22d1e63/6b142c0d-66ee-481e-a5c3-9cef8e3a4169_2?context=df",
+            "user_confirmation": "Confirmed relevance from the displayed glossary preview and industry context; exact definition and attribution retained.",
+            "version": "6b142c0d-66ee-481e-a5c3-9cef8e3a4169_2",
+            "accelerator": "Knowledge Accelerator for Healthcare",
+            "id": "dd7a9a97-0836-4af6-802e-b36ac22d1e63"
+          }
+        ],
+        "informationRequirements": [
+          {
+            "id": "1",
+            "name": "Propensity to Buy Score",
+            "purpose": "Predict likelihood of membership purchase within 30 days",
+            "definition": "Score based on past bookings, travel frequency, spend, and demographic factors",
+            "kind": "measure",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "2",
+            "name": "Customer Eligibility Flag",
+            "purpose": "Identify customers who meet eligibility criteria for invitation",
+            "definition": "Boolean flag based on active membership, no existing travel membership, and recent activity",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "3",
+            "name": "Recent Booking Count",
+            "purpose": "Measure recent engagement to prioritize invitations",
+            "definition": "Business details, including representation and time windows, remain to be agreed.",
+            "kind": "measure",
+            "glossary_reference_ids": [],
+            "priority": "optional",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose optional for this proposed item."
+          },
+          {
+            "id": "4",
+            "name": "Average Spend per Booking",
+            "purpose": "Assess customer value for targeting",
+            "definition": "Business details, including representation and time windows, remain to be agreed.",
+            "kind": "measure",
+            "glossary_reference_ids": [],
+            "priority": "undecided",
+            "priority_status": "unresolved",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Priority not yet confirmed."
+          },
+          {
+            "id": "5",
+            "name": "Customer Demographics",
+            "purpose": "Segment by age, location, and loyalty tier",
+            "definition": "Attributes such as age group, country, and loyalty program tier",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "undecided",
+            "priority_status": "unresolved",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Priority not yet confirmed."
+          },
+          {
+            "id": "6",
+            "name": "Invitation Date",
+            "purpose": "Reference point for the 30‑day conversion window",
+            "definition": "Date when the marketing invitation is sent",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "undecided",
+            "priority_status": "unresolved",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Priority not yet confirmed."
+          },
+          {
+            "id": "7",
+            "name": "Membership Purchase Indicator",
+            "purpose": "Flag customers who buy the membership within 30 days",
+            "definition": "Boolean flag indicating conversion within the 30‑day window",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "undecided",
+            "priority_status": "unresolved",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Priority not yet confirmed."
+          }
+        ],
+        "informationShape": {
+          "detail": "One result per eligible customer for this membership offer, including customer ID and score value",
+          "timing": "Use activity from the preceding 12 months; target horizon is purchase within 30 days of invitation. Weekly refresh.",
+          "original_need": "something for marketing",
+          "clarified_goal": "I want to segment existing booking customers for an annual travel membership launch.",
+          "status": "consumer_confirmed"
+        },
+        "openQuestions": [
+          "concept_lookup selection needs review: Probability of purchase: no verifiable candidates returned by this search; absence is not established",
+          "scopes selection needs review: consumer is unsure",
+          "proposal_details selection needs review: Recent Booking Count: unconfirmed numeric assertion removed; details remain open. Average Spend per Booking: unconfirmed numeric assertion removed; details remain open.",
+          "information_requirements selection needs review: consumer is unsure",
+          "Acceptance criteria remain to be agreed.",
+          "Business meaning needs agreement for: Propensity to Buy Score",
+          "Business meaning needs agreement for: Customer Eligibility Flag",
+          "Business meaning needs agreement for: Recent Booking Count",
+          "Business meaning needs agreement for: Average Spend per Booking",
+          "Business meaning needs agreement for: Customer Demographics",
+          "Business meaning needs agreement for: Invitation Date",
+          "Business meaning needs agreement for: Membership Purchase Indicator"
+        ],
+        "engineerHandoff": {
+          "nextAction": "discover_sources_and_propose_bindings",
+          "preserveConfirmedMeanings": true,
+          "requiredEvidence": [
+            "Requirement-to-source mappings",
+            "Type-specific implementation and semantic validation",
+            "Coverage and freshness assessment",
+            "Unmet requirements and proposed changes",
+            "Coverage review per requested item: available, derived, missing or ambiguous; proposed binding, evidence and any consequential difference for consumer review"
+          ]
+        }
+      }
+    }
+  ]
+}
