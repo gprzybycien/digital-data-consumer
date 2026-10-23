@@ -1,0 +1,77 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: 4b9ffc5d-f718-4d65-838c-b45a83338117
+name: Identify the top 50,000 EU travel‑booking customers who are most likely to purchase the Vo
+version: 0.1.0
+status: draft
+description:
+  purpose: Identify the top 50,000 EU travel‑booking customers who are most likely to purchase the Voyager
+    Plus membership within 30 days of an email invitation.
+  usage: Marketing reviews the ranked shortlist before sending
+  limitations: Requirements draft. Sources, bindings and any existing assets are not yet checked.
+schema:
+- name: voyager_plus_purchase_propensity_shortlist
+  businessName: Voyager Plus purchase propensity shortlist
+  logicalType: object
+  dataGranularityDescription: One row per customer
+  properties:
+  - name: customer_id
+    businessName: Customer
+    logicalType: string
+    required: true
+    description: Unique identifier for each customer
+    customProperties:
+    - property: requirementSource
+      value: proposed
+  - name: purchase_probability
+    businessName: Purchase Likelihood
+    logicalType: number
+    required: true
+    description: Predicted probability of buying Voyager Plus within 30 days
+    authoritativeDefinitions:
+    - type: businessDefinition
+      url: https://dataplatform.cloud.ibm.com/governance/terms/8a1338ad-b5b7-46bf-8cf8-6d526c07734e/06b76afc-147a-43ea-a1b8-ae5b4144721b_12?context=df
+      description: Propensity To Buy Product (Knowledge Accelerator for Cross Industry)
+    customProperties:
+    - property: requirementSource
+      value: glossary
+  - name: invitation_date
+    businessName: Email Invitation Date
+    logicalType: date
+    required: true
+    description: Date the invitation email would be sent
+    customProperties:
+    - property: requirementSource
+      value: proposed
+  - name: region
+    businessName: Region
+    logicalType: string
+    required: true
+    description: Customer's geographic region (EU)
+    customProperties:
+    - property: requirementSource
+      value: proposed
+slaProperties:
+- property: frequency
+  value: open
+customProperties:
+- property: consumerRequest
+  value:
+    originalText: We are launching Voyager Plus, an annual travel membership, in March. Which existing
+      customers are most likely to buy it within 30 days of an email invitation, so we can invite the
+      best 50,000 first? Existing travel-booking customers in the EU who opted in to marketing email.
+      Marketing reviews a ranked shortlist before sending.
+    industry: Knowledge Accelerator for Cross Industry
+    deliveryOutcome: structured
+    openQuestions:
+    - 'Not stated yet: who it is for'
+    - 'Not stated yet: time window'
+    - 'Not stated yet: how often results are needed'
+    - 'Glossary note on Propensity To Buy Product — Event distinction: Purchase probability is a different
+      outcome from lapse, cancellation, renewal, response or claim probability. Those measures must not
+      be substituted without confirming that their defined event matches the request.'
+    - 'Glossary note on Propensity To Buy Product — Context to clarify when relevant and not already provided:
+      the product and precise purchase event; population and eligibility; prediction horizon and effective
+      or score date; whether an existing score or new analysis is wanted; score representation; intended
+      action and permitted use.'
+    bindingStatus: unbound
