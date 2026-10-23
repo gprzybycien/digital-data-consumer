@@ -77,6 +77,94 @@
     <main id="root" aria-label="watsonx data consumer agent chat"></main>
 
     <script>
+      // Context belongs to one run in WxO. Carry only this workflow's state;
+      // preserve its exact bytes and restore it from the user's own chat history.
+      function createDataNeedContextBridge() {
+        const key = "consumer_data_need";
+        const historyKey = "consumer_need_context";
+        let carried;
+        let activeThread;
+        const byThread = new Map();
+
+        function threadId(message) {
+          return message?.thread_id || message?.threadId;
+        }
+
+        function remember(value, thread) {
+          if (typeof value !== "string" || !value) return;
+          carried = value;
+          if (thread) {
+            activeThread = thread;
+            byThread.set(thread, value);
+          }
+        }
+
+        function receive(event) {
+          const message = event.message;
+          const value = message?.context?.[key];
+          if (typeof value !== "string" || !value) return;
+          remember(value, threadId(message));
+          // This uses the existing conversation metadata, not browser storage.
+          message.message_state = {
+            ...message.message_state,
+            user_defined: {
+              ...message.message_state?.user_defined,
+              [historyKey]: { value, received_at: Date.now() }
+            }
+          };
+          event.saveUpdate = true;
+        }
+
+        function send(event) {
+          const message = event.message;
+          if (!message) return;
+          const thread = threadId(message);
+          const value = thread
+            ? (byThread.get(thread) || (!activeThread ? carried : undefined))
+            : carried;
+          if (typeof value === "string") {
+            // A newer context supplied by a native form callback takes priority.
+            message.context = { [key]: value, ...message.context };
+            remember(message.context[key], thread);
+          }
+        }
+
+        function loadThread(event) {
+          carried = undefined;
+          activeThread = undefined;
+          let latest;
+          for (const message of event.messages || []) {
+            const saved = message.message_state?.user_defined?.[historyKey];
+            if (saved?.value && (!latest || saved.received_at >= latest.received_at)) {
+              latest = { ...saved, thread: threadId(message) };
+            }
+          }
+          if (latest) remember(latest.value, latest.thread);
+          else {
+            // Older conversations may already expose the original context.
+            for (const message of event.messages || []) {
+              remember(message.context?.[key], threadId(message));
+            }
+          }
+        }
+
+        function restart() {
+          carried = undefined;
+          activeThread = undefined;
+          byThread.clear();
+        }
+
+        return { receive, send, loadThread, restart };
+      }
+
+      function onConsumerChatLoad(instance) {
+        const bridge = createDataNeedContextBridge();
+        instance.on("pre:receive", bridge.receive);
+        instance.on("pre:send", bridge.send);
+        instance.on("pre:threadLoaded", bridge.loadThread);
+        instance.on("pre:restartConversation", bridge.restart);
+      }
+
       window.wxOConfiguration = {
         orchestrationID: "1002447ca6584c1dbe6bdc052bdb0799_892e96ab-be74-487f-ac30-15756aa4ab42",
         hostURL: "https://au-syd.watson-orchestrate.cloud.ibm.com",
@@ -86,7 +174,9 @@
         crn: "crn:v1:bluemix:public:watsonx-orchestrate:au-syd:a/1002447ca6584c1dbe6bdc052bdb0799:892e96ab-be74-487f-ac30-15756aa4ab42::",
 
         chatOptions: {
-          agentId: "0d02a64e-d250-45ff-9c67-23c1e1cd31a9"
+          agentId: "0d02a64e-d250-45ff-9c67-23c1e1cd31a9",
+          agentEnvironmentId: "3526f233-4edd-4be7-aee8-07d88d8cb81e",
+          onLoad: onConsumerChatLoad
         },
 
         layout: {
