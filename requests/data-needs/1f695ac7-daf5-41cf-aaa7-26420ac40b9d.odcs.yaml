@@ -1,0 +1,349 @@
+# Partial ODCS requirements draft; not validated for DPH import.
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "1f695ac7-daf5-41cf-aaa7-26420ac40b9d",
+  "name": "Data need: Which eligible customers are most likely to buy the membership within 30 days of an invitation?",
+  "version": "0.1.0",
+  "status": "draft",
+  "description": {
+    "purpose": "Segment existing travel-booking customers for our annual membership launch.",
+    "usage": "Which eligible customers are most likely to buy the membership within 30 days of an invitation?",
+    "limitations": "Partial consumer requirements draft. Source discovery and physical bindings are pending. Service expectations are requests, not producer commitments."
+  },
+  "schema": [],
+  "customProperties": [
+    {
+      "property": "consumerRequest",
+      "value": {
+        "stage": "business_requirements",
+        "sourceDiscovery": "not_performed",
+        "bindingStatus": "unbound",
+        "useCase": {
+          "business_goal": "Segment existing travel-booking customers for our annual membership launch.",
+          "business_question": "Which eligible customers are most likely to buy the membership within 30 days of an invitation?",
+          "implementation_preference": "engineer_to_determine",
+          "requirements": "Customer ID: Primary key linking to booking history [essential]; Booking History: List of completed bookings with dates, destinations, and spend [optional]; Invitation Date: Timestamp of the invitation event for each eligible customer [essential]; Membership Purchase Date: Timestamp of membership purchase, if any [optional]; Propensity To Buy Score: Business details, including representation and time windows, remain to be agreed. [undecided]; Eligibility Criteria: Business rules such as minimum past bookings, recency, or spend thresholds [optional]\nDetail:",
+          "service_expectations": "",
+          "acceptance_criteria": ""
+        },
+        "guidedContext": {
+          "request_id": "1f695ac7-daf5-41cf-aaa7-26420ac40b9d",
+          "business_need": "Goal: Segment existing travel-booking customers for our annual membership launch. Question: Which eligible customers are most likely to buy the membership within 30 days of an invitation?",
+          "selections": {
+            "concepts": [
+              {
+                "id": "dd7a9a97-0836-4af6-802e-b36ac22d1e63",
+                "name": "Propensity To Buy",
+                "definition": "The likelihood that a customer will buy when a proposition is made.",
+                "context": "Knowledge Accelerator for Healthcare / Business Core Vocabulary / Agreement",
+                "category_path": "Knowledge Accelerator for Healthcare / Business Core Vocabulary / Agreement",
+                "artifact_type": "glossary_term",
+                "version": "6b142c0d-66ee-481e-a5c3-9cef8e3a4169_2",
+                "source_url": "https://dataplatform.cloud.ibm.com/governance/terms/dd7a9a97-0836-4af6-802e-b36ac22d1e63/6b142c0d-66ee-481e-a5c3-9cef8e3a4169_2?context=df",
+                "api_source_url": "https://api.dataplatform.cloud.ibm.com/v3/glossary_terms/dd7a9a97-0836-4af6-802e-b36ac22d1e63/versions/6b142c0d-66ee-481e-a5c3-9cef8e3a4169_2",
+                "retrieved_at": "2026-10-23T08:44:24.236748+00:00",
+                "ai_generated": false,
+                "accelerator": "Knowledge Accelerator for Healthcare",
+                "user_confirmation": "Confirmed relevance from the displayed glossary preview and industry context; exact definition and attribution retained."
+              }
+            ],
+            "scopes": [
+              {
+                "id": "6104ac70-57bf-400a-ae4e-2084c366d6cf",
+                "name": "Health Plan Product - Features and Benefits",
+                "definition": "This scope describes the components of a health plan product and its features and benefits as well as the certification of that product in given locations by a regulatory authority.\n\nAttribution - Do Not Remove\n\nFast Healthcare Interoperability Resources (FHIR)\n\nCopyright © 2011+ HL7\n\nEnd of Attribution",
+                "context": "Knowledge Accelerator for Healthcare / Business Scopes / Health Plan Product - Features and Benefits",
+                "category_path": "Knowledge Accelerator for Healthcare / Business Scopes / Health Plan Product - Features and Benefits",
+                "artifact_type": "category",
+                "version": "9de5c8fd-3811-4b04-907b-74dc7f2894bd_2",
+                "source_url": "https://dataplatform.cloud.ibm.com/governance/categories/6104ac70-57bf-400a-ae4e-2084c366d6cf?context=df",
+                "api_source_url": "https://api.dataplatform.cloud.ibm.com/v3/categories/6104ac70-57bf-400a-ae4e-2084c366d6cf",
+                "retrieved_at": "2026-10-23T08:44:56.978878+00:00",
+                "ai_generated": false,
+                "accelerator": "Knowledge Accelerator for Healthcare",
+                "user_confirmation": "Selected relevance from the displayed glossary meaning and industry context."
+              }
+            ],
+            "delivery": []
+          },
+          "notes": {
+            "concepts": {
+              "adjustment": "segmentation of clients",
+              "undecided": true
+            },
+            "scopes": {
+              "undecided": false,
+              "adjustment": ""
+            },
+            "delivery": {
+              "adjustment": "",
+              "undecided": true
+            },
+            "proposal_details": {
+              "undecided": true,
+              "adjustment": "Propensity To Buy Score: unconfirmed numeric assertion removed; details remain open."
+            },
+            "information_requirements": {
+              "undecided": true,
+              "adjustment": ""
+            },
+            "information_shape": {
+              "undecided": true,
+              "adjustment": ""
+            }
+          },
+          "business_goal": "Segment existing travel-booking customers for our annual membership launch.",
+          "business_question": "Which eligible customers are most likely to buy the membership within 30 days of an invitation?",
+          "business_context": "",
+          "analysis_approach": "develop",
+          "information_requirements": [
+            {
+              "id": "cust_id",
+              "name": "Customer ID",
+              "purpose": "Unique identifier for each travel‑booking customer",
+              "definition": "Primary key linking to booking history",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "booking_history",
+              "name": "Booking History",
+              "purpose": "Past travel bookings for each customer",
+              "definition": "List of completed bookings with dates, destinations, and spend",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "optional",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose optional for this proposed item."
+            },
+            {
+              "id": "membership_invitation_date",
+              "name": "Invitation Date",
+              "purpose": "Date when the membership invitation was sent",
+              "definition": "Timestamp of the invitation event for each eligible customer",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "membership_purchase_date",
+              "name": "Membership Purchase Date",
+              "purpose": "Date when the membership was purchased",
+              "definition": "Timestamp of membership purchase, if any",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "optional",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose optional for this proposed item."
+            },
+            {
+              "id": "propensity_score",
+              "name": "Propensity To Buy Score",
+              "purpose": "Estimated likelihood a customer will buy the membership within 30 days",
+              "definition": "Business details, including representation and time windows, remain to be agreed.",
+              "kind": "measure",
+              "glossary_reference_ids": [],
+              "priority": "undecided",
+              "priority_status": "unresolved",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Priority not yet confirmed."
+            },
+            {
+              "id": "eligibility_criteria",
+              "name": "Eligibility Criteria",
+              "purpose": "Rules defining which customers are eligible for the invitation",
+              "definition": "Business rules such as minimum past bookings, recency, or spend thresholds",
+              "kind": "rule",
+              "glossary_reference_ids": [],
+              "priority": "optional",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose optional for this proposed item."
+            }
+          ],
+          "excluded_information": [],
+          "information_shape": {
+            "detail": "",
+            "timing": "",
+            "original_need": "Goal: Segment existing travel-booking customers for our annual membership launch. Question: Which eligible customers are most likely to buy the membership within 30 days of an invitation?",
+            "clarified_goal": "Segment existing travel-booking customers for our annual membership launch.",
+            "status": "consumer_confirmed_with_open_questions"
+          },
+          "review": {
+            "business_goal": "Segment existing travel-booking customers for our annual membership launch.",
+            "business_question": "Which eligible customers are most likely to buy the membership within 30 days of an invitation?",
+            "acceptance_criteria": "",
+            "user_confirmation": "Submitted the final review to save this brief to GitHub."
+          }
+        },
+        "governedReferences": [
+          {
+            "accelerator": "Knowledge Accelerator for Healthcare",
+            "retrieved_at": "2026-10-23T08:44:24.236748+00:00",
+            "id": "dd7a9a97-0836-4af6-802e-b36ac22d1e63",
+            "name": "Propensity To Buy",
+            "category_path": "Knowledge Accelerator for Healthcare / Business Core Vocabulary / Agreement",
+            "definition": "The likelihood that a customer will buy when a proposition is made.",
+            "user_confirmation": "Confirmed relevance from the displayed glossary preview and industry context; exact definition and attribution retained.",
+            "source_url": "https://dataplatform.cloud.ibm.com/governance/terms/dd7a9a97-0836-4af6-802e-b36ac22d1e63/6b142c0d-66ee-481e-a5c3-9cef8e3a4169_2?context=df",
+            "version": "6b142c0d-66ee-481e-a5c3-9cef8e3a4169_2",
+            "artifact_type": "glossary_term"
+          },
+          {
+            "accelerator": "Knowledge Accelerator for Healthcare",
+            "retrieved_at": "2026-10-23T08:44:56.978878+00:00",
+            "id": "6104ac70-57bf-400a-ae4e-2084c366d6cf",
+            "name": "Health Plan Product - Features and Benefits",
+            "category_path": "Knowledge Accelerator for Healthcare / Business Scopes / Health Plan Product - Features and Benefits",
+            "definition": "This scope describes the components of a health plan product and its features and benefits as well as the certification of that product in given locations by a regulatory authority.\n\nAttribution - Do Not Remove\n\nFast Healthcare Interoperability Resources (FHIR)\n\nCopyright © 2011+ HL7\n\nEnd of Attribution",
+            "user_confirmation": "Selected relevance from the displayed glossary meaning and industry context.",
+            "source_url": "https://dataplatform.cloud.ibm.com/governance/categories/6104ac70-57bf-400a-ae4e-2084c366d6cf?context=df",
+            "version": "9de5c8fd-3811-4b04-907b-74dc7f2894bd_2",
+            "artifact_type": "category"
+          }
+        ],
+        "informationRequirements": [
+          {
+            "id": "cust_id",
+            "name": "Customer ID",
+            "purpose": "Unique identifier for each travel‑booking customer",
+            "definition": "Primary key linking to booking history",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "booking_history",
+            "name": "Booking History",
+            "purpose": "Past travel bookings for each customer",
+            "definition": "List of completed bookings with dates, destinations, and spend",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "optional",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose optional for this proposed item."
+          },
+          {
+            "id": "membership_invitation_date",
+            "name": "Invitation Date",
+            "purpose": "Date when the membership invitation was sent",
+            "definition": "Timestamp of the invitation event for each eligible customer",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "membership_purchase_date",
+            "name": "Membership Purchase Date",
+            "purpose": "Date when the membership was purchased",
+            "definition": "Timestamp of membership purchase, if any",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "optional",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose optional for this proposed item."
+          },
+          {
+            "id": "propensity_score",
+            "name": "Propensity To Buy Score",
+            "purpose": "Estimated likelihood a customer will buy the membership within 30 days",
+            "definition": "Business details, including representation and time windows, remain to be agreed.",
+            "kind": "measure",
+            "glossary_reference_ids": [],
+            "priority": "undecided",
+            "priority_status": "unresolved",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Priority not yet confirmed."
+          },
+          {
+            "id": "eligibility_criteria",
+            "name": "Eligibility Criteria",
+            "purpose": "Rules defining which customers are eligible for the invitation",
+            "definition": "Business rules such as minimum past bookings, recency, or spend thresholds",
+            "kind": "rule",
+            "glossary_reference_ids": [],
+            "priority": "optional",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose optional for this proposed item."
+          }
+        ],
+        "informationShape": {
+          "detail": "",
+          "timing": "",
+          "original_need": "Goal: Segment existing travel-booking customers for our annual membership launch. Question: Which eligible customers are most likely to buy the membership within 30 days of an invitation?",
+          "clarified_goal": "Segment existing travel-booking customers for our annual membership launch.",
+          "status": "consumer_confirmed_with_open_questions"
+        },
+        "openQuestions": [
+          "concepts selection needs review: segmentation of clients",
+          "delivery selection needs review: consumer is unsure",
+          "proposal_details selection needs review: Propensity To Buy Score: unconfirmed numeric assertion removed; details remain open.",
+          "information_requirements selection needs review: consumer is unsure",
+          "information_shape selection needs review: consumer is unsure",
+          "History and freshness expectations remain to be agreed.",
+          "Acceptance criteria remain to be agreed.",
+          "Business meaning needs agreement for: Customer ID",
+          "Business meaning needs agreement for: Booking History",
+          "Business meaning needs agreement for: Invitation Date",
+          "Business meaning needs agreement for: Membership Purchase Date",
+          "Business meaning needs agreement for: Propensity To Buy Score",
+          "Business meaning needs agreement for: Eligibility Criteria"
+        ],
+        "engineerHandoff": {
+          "nextAction": "discover_sources_and_propose_bindings",
+          "preserveConfirmedMeanings": true,
+          "requiredEvidence": [
+            "Requirement-to-source mappings",
+            "Type-specific implementation and semantic validation",
+            "Coverage and freshness assessment",
+            "Unmet requirements and proposed changes",
+            "Coverage review per requested item: available, derived, missing or ambiguous; proposed binding, evidence and any consequential difference for consumer review"
+          ]
+        }
+      }
+    }
+  ]
+}
