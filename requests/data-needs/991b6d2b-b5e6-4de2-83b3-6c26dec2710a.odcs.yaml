@@ -1,0 +1,82 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: 991b6d2b-b5e6-4de2-83b3-6c26dec2710a
+name: Identify the top 50,000 EU travel-booking customers most likely to purchase Voyager Plus w
+version: 0.1.0
+status: draft
+description:
+  purpose: Identify the top 50,000 EU travel-booking customers most likely to purchase Voyager Plus within
+    30 days of an email invitation.
+  usage: Marketing reviews the shortlist before sending
+  limitations: Requirements draft. Sources, bindings and any existing assets are not yet checked.
+schema:
+- name: voyager_plus_purchase_propensity_shortlist
+  businessName: Voyager Plus purchase propensity shortlist
+  logicalType: object
+  dataGranularityDescription: One row per customer
+  properties:
+  - name: customer_id
+    businessName: Customer
+    logicalType: string
+    required: true
+    description: unique identifier for each customer
+    authoritativeDefinitions:
+    - type: businessDefinition
+      url: https://dataplatform.cloud.ibm.com/governance/terms/f95259e1-bcb6-43cb-9e86-dd467600ca11/f400c111-9099-461e-871e-c2f291ac963b_12?context=df
+      description: Customer (Knowledge Accelerator for Cross Industry)
+    customProperties:
+    - property: requirementSource
+      value: glossary
+  - name: likelihood_score
+    businessName: Purchase Likelihood
+    logicalType: number
+    required: true
+    description: predicted probability of purchase
+    authoritativeDefinitions:
+    - type: businessDefinition
+      url: https://dataplatform.cloud.ibm.com/governance/terms/8a1338ad-b5b7-46bf-8cf8-6d526c07734e/06b76afc-147a-43ea-a1b8-ae5b4144721b_12?context=df
+      description: Propensity To Buy Product (Knowledge Accelerator for Cross Industry)
+    customProperties:
+    - property: requirementSource
+      value: glossary
+  - name: email_opt_in
+    businessName: Email Opt-in
+    logicalType: boolean
+    required: true
+    description: indicates if customer consented to marketing email
+    customProperties:
+    - property: requirementSource
+      value: proposed
+    - property: openQuestion
+      value: Business meaning to agree; no governed term was found for "marketing consent".
+  quality:
+  - type: text
+    description: 'Volume: 50,000 customers'
+    customProperties:
+    - property: requirementSource
+      value: typed
+slaProperties:
+- property: predictionHorizon
+  value: 30
+  unit: d
+- property: frequency
+  value: open
+customProperties:
+- property: consumerRequest
+  value:
+    originalText: We are launching Voyager Plus, an annual travel membership, in March. Which existing
+      customers are most likely to buy it within 30 days of an email invitation, so we can invite the
+      best 50,000 first? Existing travel-booking customers in the EU who opted in to marketing email.
+      Marketing reviews a ranked shortlist before sending.
+    industry: Knowledge Accelerator for Cross Industry
+    deliveryOutcome: structured
+    openQuestions:
+    - 'Not stated yet: how often results are needed'
+    - 'Glossary note on Propensity To Buy Product — Event distinction: Purchase probability is a different
+      outcome from lapse, cancellation, renewal, response or claim probability. Those measures must not
+      be substituted without confirming that their defined event matches the request.'
+    - 'Glossary note on Propensity To Buy Product — Context to clarify when relevant and not already provided:
+      the product and precise purchase event; population and eligibility; prediction horizon and effective
+      or score date; whether an existing score or new analysis is wanted; score representation; intended
+      action and permitted use.'
+    bindingStatus: unbound
