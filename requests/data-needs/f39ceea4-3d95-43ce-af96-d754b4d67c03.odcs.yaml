@@ -1,0 +1,236 @@
+# Partial ODCS requirements draft; not validated for DPH import.
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "f39ceea4-3d95-43ce-af96-d754b4d67c03",
+  "name": "Data need: Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which",
+  "version": "0.1.0",
+  "status": "draft",
+  "description": {
+    "purpose": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+    "usage": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+    "limitations": "Partial consumer requirements draft. Source discovery and physical bindings are pending. Service expectations are requests, not producer commitments."
+  },
+  "schema": [],
+  "customProperties": [
+    {
+      "property": "consumerRequest",
+      "value": {
+        "stage": "business_requirements",
+        "sourceDiscovery": "not_performed",
+        "bindingStatus": "unbound",
+        "useCase": {
+          "business_goal": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+          "business_question": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+          "implementation_preference": "graph",
+          "requirements": "Eligible customer list: List of travel-booking customers who satisfy eligibility rules (e.g., recent activity, loyalty tier) [essential]; Membership purchase propensity score: Business details, including representation and time windows, remain to be agreed. [essential]; Segment definition: Rules grouping customers by behavior, geography, and propensity thresholds [essential]\nDetail: individual customers",
+          "service_expectations": "last30 days",
+          "acceptance_criteria": ""
+        },
+        "guidedContext": {
+          "request_id": "f39ceea4-3d95-43ce-af96-d754b4d67c03",
+          "business_need": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+          "selections": {
+            "concepts": [
+              {
+                "id": "4e4a2015-0dcf-42a7-8e20-689a8e652fb0",
+                "name": "Propensity score propensity to buy",
+                "definition": "The probability that a party will buy when a proposition is made.\r\n\r\nFor example:\r\n0.4",
+                "context": "Knowledge Accelerator for Insurance / Business Core Vocabulary / Assessment and Score",
+                "category_path": "Knowledge Accelerator for Insurance / Business Core Vocabulary / Assessment and Score",
+                "artifact_type": "glossary_term",
+                "version": "5139038e-e6c3-4efd-bbbc-b068792325e7_0",
+                "source_url": "https://dataplatform.cloud.ibm.com/governance/terms/4e4a2015-0dcf-42a7-8e20-689a8e652fb0/5139038e-e6c3-4efd-bbbc-b068792325e7_0?context=df",
+                "api_source_url": "https://api.dataplatform.cloud.ibm.com/v3/glossary_terms/4e4a2015-0dcf-42a7-8e20-689a8e652fb0/versions/5139038e-e6c3-4efd-bbbc-b068792325e7_0",
+                "retrieved_at": "2026-10-23T07:55:16.562670+00:00",
+                "ai_generated": false,
+                "accelerator": "Knowledge Accelerator for Insurance",
+                "user_confirmation": "Confirmed relevance from the displayed glossary preview and industry context; exact definition and attribution retained."
+              }
+            ],
+            "delivery": [
+              {
+                "id": "graph",
+                "name": "Connected entities and relationships — explore how customers, products or other things connect",
+                "definition": "Connected entities and relationships — explore how customers, products or other things connect",
+                "context": "Expressed in the consumer’s answer",
+                "user_confirmation": "Selected the displayed definition and context in the delivery form."
+              }
+            ]
+          },
+          "notes": {
+            "concepts": {
+              "adjustment": "",
+              "undecided": false
+            },
+            "scopes": {
+              "undecided": true,
+              "adjustment": "No related business context could be verified from loaded memberships."
+            },
+            "delivery": {
+              "adjustment": "",
+              "undecided": false
+            },
+            "proposal_details": {
+              "undecided": true,
+              "adjustment": "Membership purchase propensity score: unconfirmed numeric assertion removed; details remain open."
+            },
+            "information_requirements": {
+              "undecided": false,
+              "adjustment": ""
+            },
+            "information_shape": {
+              "undecided": false,
+              "adjustment": ""
+            }
+          },
+          "business_goal": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+          "business_context": "",
+          "analysis_approach": "unsure",
+          "information_requirements": [
+            {
+              "id": "item1",
+              "name": "Eligible customer list",
+              "purpose": "Identify customers who meet eligibility for membership invitation",
+              "definition": "List of travel-booking customers who satisfy eligibility rules (e.g., recent activity, loyalty tier)",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "item2",
+              "name": "Membership purchase propensity score",
+              "purpose": "Score indicating likelihood of buying membership within 30 days",
+              "definition": "Business details, including representation and time windows, remain to be agreed.",
+              "kind": "measure",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "item3",
+              "name": "Segment definition",
+              "purpose": "Define customer segments for targeted invitations",
+              "definition": "Rules grouping customers by behavior, geography, and propensity thresholds",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            }
+          ],
+          "excluded_information": [],
+          "information_shape": {
+            "detail": "individual customers",
+            "timing": "last30 days",
+            "original_need": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+            "clarified_goal": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+            "status": "consumer_confirmed"
+          },
+          "review": {
+            "business_goal": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+            "business_question": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+            "acceptance_criteria": "",
+            "user_confirmation": "Submitted the final review to save this brief to GitHub."
+          }
+        },
+        "governedReferences": [
+          {
+            "category_path": "Knowledge Accelerator for Insurance / Business Core Vocabulary / Assessment and Score",
+            "user_confirmation": "Confirmed relevance from the displayed glossary preview and industry context; exact definition and attribution retained.",
+            "definition": "The probability that a party will buy when a proposition is made.\r\n\r\nFor example:\r\n0.4",
+            "accelerator": "Knowledge Accelerator for Insurance",
+            "name": "Propensity score propensity to buy",
+            "artifact_type": "glossary_term",
+            "retrieved_at": "2026-10-23T07:55:16.562670+00:00",
+            "id": "4e4a2015-0dcf-42a7-8e20-689a8e652fb0",
+            "version": "5139038e-e6c3-4efd-bbbc-b068792325e7_0",
+            "source_url": "https://dataplatform.cloud.ibm.com/governance/terms/4e4a2015-0dcf-42a7-8e20-689a8e652fb0/5139038e-e6c3-4efd-bbbc-b068792325e7_0?context=df"
+          }
+        ],
+        "informationRequirements": [
+          {
+            "id": "item1",
+            "name": "Eligible customer list",
+            "purpose": "Identify customers who meet eligibility for membership invitation",
+            "definition": "List of travel-booking customers who satisfy eligibility rules (e.g., recent activity, loyalty tier)",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "item2",
+            "name": "Membership purchase propensity score",
+            "purpose": "Score indicating likelihood of buying membership within 30 days",
+            "definition": "Business details, including representation and time windows, remain to be agreed.",
+            "kind": "measure",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "item3",
+            "name": "Segment definition",
+            "purpose": "Define customer segments for targeted invitations",
+            "definition": "Rules grouping customers by behavior, geography, and propensity thresholds",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          }
+        ],
+        "informationShape": {
+          "detail": "individual customers",
+          "timing": "last30 days",
+          "original_need": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+          "clarified_goal": "Goal: `Segment existing travel-booking customers for our annual membership launch.` Question: `Which eligible customers are most likely to buy the membership within 30 days of an invitation?`",
+          "status": "consumer_confirmed"
+        },
+        "openQuestions": [
+          "scopes selection needs review: No related business context could be verified from loaded memberships.",
+          "proposal_details selection needs review: Membership purchase propensity score: unconfirmed numeric assertion removed; details remain open.",
+          "Acceptance criteria remain to be agreed.",
+          "Business meaning needs agreement for: Eligible customer list",
+          "Business meaning needs agreement for: Membership purchase propensity score",
+          "Business meaning needs agreement for: Segment definition"
+        ],
+        "engineerHandoff": {
+          "nextAction": "discover_sources_and_propose_bindings",
+          "preserveConfirmedMeanings": true,
+          "requiredEvidence": [
+            "Requirement-to-source mappings",
+            "Type-specific implementation and semantic validation",
+            "Coverage and freshness assessment",
+            "Unmet requirements and proposed changes",
+            "Coverage review per requested item: available, derived, missing or ambiguous; proposed binding, evidence and any consequential difference for consumer review"
+          ]
+        }
+      }
+    }
+  ]
+}
