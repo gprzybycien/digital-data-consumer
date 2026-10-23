@@ -1,0 +1,332 @@
+# Partial ODCS requirements draft; not validated for DPH import.
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "2e912fcc-0cec-4885-aaa1-62b54e8d8a1b",
+  "name": "Data need: Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+  "version": "0.1.0",
+  "status": "draft",
+  "description": {
+    "purpose": "I want to segment existing booking customers for an annual travel membership launch. Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+    "usage": "Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+    "limitations": "Partial consumer requirements draft. Source discovery and physical bindings are pending. Service expectations are requests, not producer commitments."
+  },
+  "schema": [],
+  "customProperties": [
+    {
+      "property": "consumerRequest",
+      "value": {
+        "stage": "business_requirements",
+        "sourceDiscovery": "not_performed",
+        "bindingStatus": "unbound",
+        "useCase": {
+          "business_goal": "I want to segment existing booking customers for an annual travel membership launch. Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+          "business_question": "Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+          "implementation_preference": "structured",
+          "requirements": "Membership purchase likelihood within 30 days: Propensity score indicating likelihood of purchase [essential]; Existing booking customers: Customers with at least one completed booking in the last year [essential]; Invitation eligibility criteria: Customers meeting criteria such as active status, recent activity, and no existing membership [optional]; Propensity to Buy score: Business details, including representation and time windows, remain to be agreed. [undecided]; Ranked customer list: List of eligible customers sorted by descending propensity score [undecided]\nDetail: One result per eligible customer for this membership offer, describing individual customer attributes and predicted likelihood",
+          "service_expectations": "Use activity from the preceding 12 months; target horizon is purchase within 30 days of invitation; weekly refresh",
+          "acceptance_criteria": ""
+        },
+        "guidedContext": {
+          "request_id": "2e912fcc-0cec-4885-aaa1-62b54e8d8a1b",
+          "business_need": "something for marketing",
+          "selections": {
+            "concepts": [
+              {
+                "id": "8a1338ad-b5b7-46bf-8cf8-6d526c07734e",
+                "name": "Propensity To Buy Product",
+                "definition": "Probability that a person or organization will purchase a product.",
+                "context": "Knowledge Accelerator for Cross Industry / Business Core Vocabulary / Person",
+                "category_path": "Knowledge Accelerator for Cross Industry / Business Core Vocabulary / Person",
+                "artifact_type": "glossary_term",
+                "version": "06b76afc-147a-43ea-a1b8-ae5b4144721b_11",
+                "source_url": "https://dataplatform.cloud.ibm.com/governance/terms/8a1338ad-b5b7-46bf-8cf8-6d526c07734e/06b76afc-147a-43ea-a1b8-ae5b4144721b_11?context=df",
+                "api_source_url": "https://api.dataplatform.cloud.ibm.com/v3/glossary_terms/8a1338ad-b5b7-46bf-8cf8-6d526c07734e/versions/06b76afc-147a-43ea-a1b8-ae5b4144721b_11",
+                "retrieved_at": "2026-10-23T09:58:21.773394+00:00",
+                "ai_generated": false,
+                "accelerator": "Knowledge Accelerator for Cross Industry",
+                "user_confirmation": "Confirmed relevance from the displayed glossary preview and industry context; exact definition and attribution retained."
+              }
+            ],
+            "scopes": [],
+            "delivery": [
+              {
+                "id": "structured",
+                "name": "Reports and calculations — compare numbers in tables, such as sales by month",
+                "definition": "Reports and calculations — compare numbers in tables, such as sales by month",
+                "context": "Expressed in the consumer’s answer",
+                "user_confirmation": "Selected the displayed definition and context in the delivery form."
+              }
+            ]
+          },
+          "notes": {
+            "concepts": {
+              "adjustment": "",
+              "undecided": false
+            },
+            "scopes": {
+              "undecided": true,
+              "adjustment": ""
+            },
+            "delivery": {
+              "adjustment": "",
+              "undecided": false
+            },
+            "proposal_details": {
+              "undecided": true,
+              "adjustment": "Propensity to Buy score: unconfirmed numeric assertion removed; details remain open."
+            },
+            "information_requirements": {
+              "undecided": true,
+              "adjustment": ""
+            },
+            "information_shape": {
+              "undecided": false,
+              "adjustment": ""
+            }
+          },
+          "business_goal": "I want to segment existing booking customers for an annual travel membership launch. Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+          "business_question": "Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+          "industry_options": [
+            {
+              "id": "0d3793b0-5b17-4f04-bd5f-b7d4d8d487c4",
+              "name": "Knowledge Accelerator Sample Personal Data"
+            },
+            {
+              "id": "7b443c89-5306-4069-90b4-af58479d800e",
+              "name": "Knowledge Accelerator for Cross Industry"
+            },
+            {
+              "id": "9c51cc06-4366-4451-bba8-888364d873ad",
+              "name": "Knowledge Accelerator for Energy and Utilities"
+            },
+            {
+              "id": "d2305961-1902-4394-8aba-94e1cf730a45",
+              "name": "Knowledge Accelerator for Financial Services"
+            },
+            {
+              "id": "7b7a6457-2630-482f-8b49-e46d632b012d",
+              "name": "Knowledge Accelerator for Healthcare"
+            },
+            {
+              "id": "2a1d19ed-9940-4955-9630-920c60e4ffc9",
+              "name": "Knowledge Accelerator for Insurance"
+            },
+            {
+              "id": "868acb88-7697-420d-b2f9-42f46f2bd739",
+              "name": "Knowledge Accelerators"
+            }
+          ],
+          "industry_lookup_error": null,
+          "business_context": "Annual travel membership offering for existing booking customers; marketing will review a shortlist before invitations.",
+          "analysis_approach": "unsure",
+          "industry": {
+            "accelerator_id": "7b443c89-5306-4069-90b4-af58479d800e",
+            "accelerator_name": "Knowledge Accelerator for Cross Industry"
+          },
+          "information_requirements": [
+            {
+              "id": "outcome",
+              "name": "Membership purchase likelihood within 30 days",
+              "purpose": "Rank customers by predicted probability of buying the travel membership after invitation",
+              "definition": "Propensity score indicating likelihood of purchase",
+              "kind": "measure",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "population",
+              "name": "Existing booking customers",
+              "purpose": "Base segment of customers with prior bookings",
+              "definition": "Customers with at least one completed booking in the last year",
+              "kind": "attribute",
+              "glossary_reference_ids": [],
+              "priority": "essential",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose essential for this proposed item."
+            },
+            {
+              "id": "eligibility",
+              "name": "Invitation eligibility criteria",
+              "purpose": "Filters to determine which customers can be invited",
+              "definition": "Customers meeting criteria such as active status, recent activity, and no existing membership",
+              "kind": "rule",
+              "glossary_reference_ids": [],
+              "priority": "optional",
+              "priority_status": "confirmed",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Chose optional for this proposed item."
+            },
+            {
+              "id": "score",
+              "name": "Propensity to Buy score",
+              "purpose": "Predictive score for each customer",
+              "definition": "Business details, including representation and time windows, remain to be agreed.",
+              "kind": "measure",
+              "glossary_reference_ids": [],
+              "priority": "undecided",
+              "priority_status": "unresolved",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Priority not yet confirmed."
+            },
+            {
+              "id": "ranking",
+              "name": "Ranked customer list",
+              "purpose": "Provide ordered list for marketing review",
+              "definition": "List of eligible customers sorted by descending propensity score",
+              "kind": "delivery_requirement",
+              "glossary_reference_ids": [],
+              "priority": "undecided",
+              "priority_status": "unresolved",
+              "meaning_status": "unresolved",
+              "definition_origin": "consumer_requirement_proposal",
+              "binding_status": "unbound",
+              "user_confirmation": "Priority not yet confirmed."
+            }
+          ],
+          "excluded_information": [],
+          "information_shape": {
+            "detail": "One result per eligible customer for this membership offer, describing individual customer attributes and predicted likelihood",
+            "timing": "Use activity from the preceding 12 months; target horizon is purchase within 30 days of invitation; weekly refresh",
+            "original_need": "something for marketing",
+            "clarified_goal": "I want to segment existing booking customers for an annual travel membership launch. Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+            "status": "consumer_confirmed"
+          },
+          "review": {
+            "business_goal": "I want to segment existing booking customers for an annual travel membership launch. Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+            "business_question": "Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+            "acceptance_criteria": "",
+            "user_confirmation": "Submitted the final review to save this brief to GitHub."
+          }
+        },
+        "governedReferences": [
+          {
+            "definition": "Probability that a person or organization will purchase a product.",
+            "name": "Propensity To Buy Product",
+            "user_confirmation": "Confirmed relevance from the displayed glossary preview and industry context; exact definition and attribution retained.",
+            "retrieved_at": "2026-10-23T09:58:21.773394+00:00",
+            "accelerator": "Knowledge Accelerator for Cross Industry",
+            "artifact_type": "glossary_term",
+            "id": "8a1338ad-b5b7-46bf-8cf8-6d526c07734e",
+            "source_url": "https://dataplatform.cloud.ibm.com/governance/terms/8a1338ad-b5b7-46bf-8cf8-6d526c07734e/06b76afc-147a-43ea-a1b8-ae5b4144721b_11?context=df",
+            "version": "06b76afc-147a-43ea-a1b8-ae5b4144721b_11",
+            "category_path": "Knowledge Accelerator for Cross Industry / Business Core Vocabulary / Person"
+          }
+        ],
+        "informationRequirements": [
+          {
+            "id": "outcome",
+            "name": "Membership purchase likelihood within 30 days",
+            "purpose": "Rank customers by predicted probability of buying the travel membership after invitation",
+            "definition": "Propensity score indicating likelihood of purchase",
+            "kind": "measure",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "population",
+            "name": "Existing booking customers",
+            "purpose": "Base segment of customers with prior bookings",
+            "definition": "Customers with at least one completed booking in the last year",
+            "kind": "attribute",
+            "glossary_reference_ids": [],
+            "priority": "essential",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose essential for this proposed item."
+          },
+          {
+            "id": "eligibility",
+            "name": "Invitation eligibility criteria",
+            "purpose": "Filters to determine which customers can be invited",
+            "definition": "Customers meeting criteria such as active status, recent activity, and no existing membership",
+            "kind": "rule",
+            "glossary_reference_ids": [],
+            "priority": "optional",
+            "priority_status": "confirmed",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Chose optional for this proposed item."
+          },
+          {
+            "id": "score",
+            "name": "Propensity to Buy score",
+            "purpose": "Predictive score for each customer",
+            "definition": "Business details, including representation and time windows, remain to be agreed.",
+            "kind": "measure",
+            "glossary_reference_ids": [],
+            "priority": "undecided",
+            "priority_status": "unresolved",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Priority not yet confirmed."
+          },
+          {
+            "id": "ranking",
+            "name": "Ranked customer list",
+            "purpose": "Provide ordered list for marketing review",
+            "definition": "List of eligible customers sorted by descending propensity score",
+            "kind": "delivery_requirement",
+            "glossary_reference_ids": [],
+            "priority": "undecided",
+            "priority_status": "unresolved",
+            "meaning_status": "unresolved",
+            "definition_origin": "consumer_requirement_proposal",
+            "binding_status": "unbound",
+            "user_confirmation": "Priority not yet confirmed."
+          }
+        ],
+        "informationShape": {
+          "detail": "One result per eligible customer for this membership offer, describing individual customer attributes and predicted likelihood",
+          "timing": "Use activity from the preceding 12 months; target horizon is purchase within 30 days of invitation; weekly refresh",
+          "original_need": "something for marketing",
+          "clarified_goal": "I want to segment existing booking customers for an annual travel membership launch. Which eligible customers are likely to buy the membership within 30 days of an invitation?",
+          "status": "consumer_confirmed"
+        },
+        "openQuestions": [
+          "scopes selection needs review: consumer is unsure",
+          "proposal_details selection needs review: Propensity to Buy score: unconfirmed numeric assertion removed; details remain open.",
+          "information_requirements selection needs review: consumer is unsure",
+          "Acceptance criteria remain to be agreed.",
+          "Business meaning needs agreement for: Membership purchase likelihood within 30 days",
+          "Business meaning needs agreement for: Existing booking customers",
+          "Business meaning needs agreement for: Invitation eligibility criteria",
+          "Business meaning needs agreement for: Propensity to Buy score",
+          "Business meaning needs agreement for: Ranked customer list"
+        ],
+        "engineerHandoff": {
+          "nextAction": "discover_sources_and_propose_bindings",
+          "preserveConfirmedMeanings": true,
+          "requiredEvidence": [
+            "Requirement-to-source mappings",
+            "Type-specific implementation and semantic validation",
+            "Coverage and freshness assessment",
+            "Unmet requirements and proposed changes",
+            "Coverage review per requested item: available, derived, missing or ambiguous; proposed binding, evidence and any consequential difference for consumer review"
+          ]
+        }
+      }
+    }
+  ]
+}
