@@ -1,0 +1,150 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: 0fa35705-944c-47d2-8039-4ad26c87b558
+name: Identify the top 50,000 existing EU travel‑booking customers most likely to purchase…
+version: 0.1.0
+status: draft
+description:
+  purpose: Identify the top 50,000 existing EU travel‑booking customers most likely to purchase Voyager
+    Plus within 30 days of an email invitation.
+  usage: marketing reviews the ranked shortlist before sending
+  limitations: Requirements draft. Sources, bindings and any existing assets are not yet checked.
+schema:
+- name: requested_information
+  businessName: Requested information
+  logicalType: object
+  dataGranularityDescription: To agree with the engineer
+  properties:
+  - name: customer_id
+    businessName: customer
+    logicalType: string
+    required: true
+    description: unique identifier for each customer
+    authoritativeDefinitions:
+    - type: businessDefinition
+      url: https://dataplatform.cloud.ibm.com/governance/terms/f95259e1-bcb6-43cb-9e86-dd467600ca11/f400c111-9099-461e-871e-c2f291ac963b_12?context=df
+      description: Customer (Knowledge Accelerator for Cross Industry)
+    customProperties:
+    - property: requirementSource
+      value: glossary
+    - property: informationRole
+      value: identifier
+  - name: purchase_likelihood
+    businessName: likelihood score
+    logicalType: number
+    required: true
+    description: predicted probability of buying Voyager Plus
+    authoritativeDefinitions:
+    - type: businessDefinition
+      url: https://dataplatform.cloud.ibm.com/governance/terms/8a1338ad-b5b7-46bf-8cf8-6d526c07734e/06b76afc-147a-43ea-a1b8-ae5b4144721b_12?context=df
+      description: Propensity To Buy Product (Knowledge Accelerator for Cross Industry)
+    customProperties:
+    - property: requirementSource
+      value: glossary
+    - property: informationRole
+      value: outcome
+  - name: selection_reason
+    businessName: selection reason
+    logicalType: string
+    required: true
+    description: reason for selecting the customer, based on likelihood ranking
+    customProperties:
+    - property: requirementSource
+      value: proposed
+    - property: informationRole
+      value: rank
+  - name: prediction_date
+    businessName: prediction date
+    logicalType: date
+    required: true
+    description: date of the likelihood prediction
+    customProperties:
+    - property: requirementSource
+      value: proposed
+    - property: informationRole
+      value: as_of
+  - name: region
+    businessName: region
+    logicalType: string
+    required: true
+    description: EU customers only
+    authoritativeDefinitions:
+    - type: businessDefinition
+      url: https://dataplatform.cloud.ibm.com/governance/terms/560d17da-2df3-4c8a-90c9-1c1e45099f99/b96b37be-3855-4309-afbe-24925b51ed92_10?context=df
+      description: Region Name (Knowledge Accelerator for Cross Industry)
+    customProperties:
+    - property: requirementSource
+      value: glossary
+    - property: informationRole
+      value: eligibility
+  - name: email_opt_in
+    businessName: marketing opt in
+    logicalType: boolean
+    required: true
+    description: customers who have opted in to marketing emails
+    customProperties:
+    - property: requirementSource
+      value: proposed
+    - property: informationRole
+      value: eligibility
+  - name: email_invitation_sent
+    businessName: invitation
+    logicalType: boolean
+    required: true
+    description: flag indicating invitation was sent
+    customProperties:
+    - property: requirementSource
+      value: proposed
+    - property: informationRole
+      value: activation
+  - name: review_status
+    businessName: review
+    logicalType: string
+    required: true
+    description: indicates if marketing has reviewed the shortlist
+    customProperties:
+    - property: requirementSource
+      value: proposed
+    - property: informationRole
+      value: explanation
+  quality:
+  - type: text
+    description: 'Rule: region — EU customers only'
+    customProperties:
+    - property: requirementSource
+      value: proposed
+  - type: text
+    description: 'Rule: marketing opt in — customers who have opted in to marketing emails'
+    customProperties:
+    - property: requirementSource
+      value: proposed
+  - type: text
+    description: 'Volume: 50,000 customers'
+    customProperties:
+    - property: requirementSource
+      value: typed
+slaProperties:
+- property: predictionHorizon
+  value: 30
+  unit: d
+- property: frequency
+  value: annual launch in March
+customProperties:
+- property: consumerRequest
+  value:
+    originalText: We are launching Voyager Plus, an annual travel membership, in March. Which existing
+      customers are most likely to buy it within 30 days of an email invitation, so we can invite the
+      best 50,000 first? Existing travel-booking customers in the EU who opted in to marketing email.
+      Marketing reviews a ranked shortlist before sending.
+    industry: Knowledge Accelerator for Cross Industry
+    deliveryOutcome: structured
+    openQuestions:
+    - 'Glossary note on Propensity To Buy Product — Event distinction: Purchase probability is a different
+      outcome from lapse, cancellation, renewal, response or claim probability. Those measures must not
+      be substituted without confirming that their defined event matches the request.'
+    - 'Glossary note on Propensity To Buy Product — Context to clarify when relevant and not already provided:
+      the product and precise purchase event; population and eligibility; prediction horizon and effective
+      or score date; whether an existing score or new analysis is wanted; score representation; intended
+      action and permitted use.'
+    - Granularity to agree.
+    bindingStatus: unbound
